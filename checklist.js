@@ -1,135 +1,181 @@
 
 (() => {
-  const ID = "gfc-checklist";
+  "use strict";
 
-  if (document.getElementById(ID)) {
-    document.getElementById(ID).remove();
+  const ID = "gfc-checklist";
+  const old = document.getElementById(ID);
+
+  if (old) {
+    old.remove();
     return;
   }
 
-  const phases = {
-    "PRE-FLIGHT": [
-      "Flight plan reviewed",
-      "Weather checked",
-      "Aircraft and runway identified",
-      "Fuel and payload checked",
-      "Briefing completed"
-    ],
-    "BEFORE START": [
-      "Parking brake set",
-      "Doors and cabin checked",
-      "Beacon light on",
-      "Engine start procedure completed"
-    ],
-    "BEFORE TAKEOFF": [
-      "Flight controls checked",
-      "Flaps set for takeoff",
-      "Trim checked",
-      "Takeoff briefing reviewed"
-    ],
-    "CLIMB & CRUISE": [
-      "Positive climb and gear up",
-      "After-takeoff checks completed",
-      "Cruise altitude checked"
-    ],
-    "DESCENT & APPROACH": [
-      "Descent briefing completed",
-      "Approach and runway confirmed",
-      "Landing configuration checked"
-    ],
-    "AFTER LANDING": [
-      "Runway vacated",
-      "After-landing checks completed",
-      "Aircraft secured at stand"
-    ]
-  };
+  const phases = [
+    {
+      name: "PRE-FLIGHT",
+      items: [
+        "Flight plan reviewed",
+        "Weather checked",
+        "Aircraft and runway identified",
+        "Fuel and payload checked",
+        "Briefing completed"
+      ]
+    },
+    {
+      name: "BEFORE START",
+      items: [
+        "Parking brake set",
+        "Doors and cabin checked",
+        "Beacon light on",
+        "Engine start procedure completed"
+      ]
+    },
+    {
+      name: "BEFORE TAKEOFF",
+      items: [
+        "Flight controls checked",
+        "Flaps set for takeoff",
+        "Trim checked",
+        "Takeoff briefing reviewed"
+      ]
+    },
+    {
+      name: "CLIMB & CRUISE",
+      items: [
+        "Positive climb and gear up",
+        "After-takeoff checks completed",
+        "Cruise altitude checked"
+      ]
+    },
+    {
+      name: "DESCENT & APPROACH",
+      items: [
+        "Descent briefing completed",
+        "Approach and runway confirmed",
+        "Landing configuration checked"
+      ]
+    },
+    {
+      name: "AFTER LANDING",
+      items: [
+        "Runway vacated",
+        "After-landing checks completed",
+        "Aircraft secured at stand"
+      ]
+    }
+  ];
 
-  const panel = document.createElement("section");
-  panel.id = ID;
-  panel.style.cssText = `
-    position:fixed;top:80px;right:20px;z-index:1000000;
-    width:320px;max-width:90vw;max-height:80vh;overflow:auto;
-    background:#101820;color:#eaf4fa;border:1px solid #526b7b;
-    border-radius:10px;padding:12px;font:14px Arial;
-    box-shadow:0 8px 28px #0009;
-  `;
+  const checked = phases.map(p => p.items.map(() => false));
 
-  panel.innerHTML = `
-    <header style="display:flex;justify-content:space-between;
-      align-items:center;background:#203644;padding:10px;
-      margin:-12px -12px 12px;font-weight:bold">
+  const box = document.createElement("aside");
+  box.id = ID;
+  box.style.cssText =
+    "position:fixed;top:60px;right:25px;z-index:999998;width:330px;max-width:90vw;max-height:82vh;overflow:auto;background:#10151c;color:#e8eef5;border:1px solid #3b4857;border-radius:9px;box-shadow:0 10px 32px #000b;font:13px Arial,sans-serif";
+
+  box.innerHTML = `
+    <header id="gfc-check-drag" style="position:sticky;top:0;background:#171f29;padding:12px;border-bottom:1px solid #34404d;cursor:move;font-weight:bold;user-select:none">
       FLIGHT CHECKLIST
-      <button id="gfc-cl-close">✕</button>
+      <button id="gfc-check-close" style="float:right;background:#293441;color:#fff;border:1px solid #435264;border-radius:4px;cursor:pointer">✕</button>
     </header>
-    <label for="gfc-cl-phase">Flight phase</label>
-    <select id="gfc-cl-phase" style="width:100%;padding:8px;margin:8px 0;
-      background:#1d2b35;color:white"></select>
-    <div id="gfc-cl-progress" style="margin:8px 0;color:#8fd7ff"></div>
-    <div id="gfc-cl-items"></div>
-    <button id="gfc-cl-reset" style="margin-top:12px;padding:8px;width:100%">
-      Reset this phase
-    </button>
-    <p style="font-size:11px;color:#a9bac5">
-      Simulation aid only. Confirm procedures against the aircraft's
-      appropriate checklist.
-    </p>
-  `;
+    <div style="padding:12px">
+      <label for="gfc-phase" style="display:block;color:#9eafc0;margin-bottom:5px">CHECKLIST PHASE</label>
+      <select id="gfc-phase" style="width:100%;padding:8px;background:#1b242e;color:#edf4fb;border:1px solid #435264;border-radius:5px"></select>
+      <div id="gfc-progress" style="margin:10px 0;color:#8edbb0;font:12px monospace"></div>
+      <div id="gfc-items"></div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button id="gfc-reset" style="flex:1;padding:8px;background:#26394a;color:#fff;border:1px solid #50677d;border-radius:5px;cursor:pointer">RESET PHASE</button>
+      </div>
+      <p style="color:#8fa0b2;font-size:11px;line-height:1.4;margin:12px 0 0">Training aid only. Always follow the checklist for the specific aircraft and simulator.</p>
+    </div>`;
 
-  document.body.appendChild(panel);
+  document.body.appendChild(box);
 
-  const select = panel.querySelector("#gfc-cl-phase");
-  const items = panel.querySelector("#gfc-cl-items");
-  const progress = panel.querySelector("#gfc-cl-progress");
-  const state = {};
+  const $ = s => box.querySelector(s);
 
-  for (const phase of Object.keys(phases)) {
-    state[phase] = phases[phase].map(() => false);
+  phases.forEach((p, i) => {
     const option = document.createElement("option");
-    option.value = phase;
-    option.textContent = phase;
-    select.appendChild(option);
-  }
+    option.value = i;
+    option.textContent = p.name;
+    $("#gfc-phase").appendChild(option);
+  });
 
   function render() {
-    const phase = select.value;
-    items.replaceChildren();
+    const idx = Number($("#gfc-phase").value) || 0;
+    const phase = phases[idx];
+    const done = checked[idx].filter(Boolean).length;
 
-    phases[phase].forEach((label, index) => {
-      const row = document.createElement("label");
-      row.style.cssText =
-        "display:flex;gap:9px;align-items:flex-start;padding:9px 3px;" +
-        "border-bottom:1px solid #293944;cursor:pointer";
+    $("#gfc-progress").textContent =
+      `${done} / ${phase.items.length} COMPLETE`;
 
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      checkbox.checked = state[phase][index];
-      checkbox.style.marginTop = "2px";
-      checkbox.addEventListener("change", () => {
-        state[phase][index] = checkbox.checked;
+    const list = $("#gfc-items");
+    list.innerHTML = "";
+
+    phase.items.forEach((item, j) => {
+      const label = document.createElement("label");
+
+      label.style.cssText =
+        "display:flex;align-items:flex-start;gap:9px;padding:10px 8px;margin:5px 0;background:#171f29;border:1px solid #303d4b;border-radius:5px;cursor:pointer;line-height:1.35";
+
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.checked = checked[idx][j];
+      input.style.cssText =
+        "margin-top:2px;accent-color:#67d59b;flex-shrink:0";
+
+      input.addEventListener("change", () => {
+        checked[idx][j] = input.checked;
         render();
       });
 
       const text = document.createElement("span");
-      text.textContent = label;
-      if (checkbox.checked) {
-        text.style.color = "#80e6a2";
-        text.style.textDecoration = "line-through";
+      text.textContent = item;
+
+      if (input.checked) {
+        text.style.cssText =
+          "color:#8fa0b2;text-decoration:line-through";
       }
 
-      row.append(checkbox, text);
-      items.appendChild(row);
+      label.append(input, text);
+      list.appendChild(label);
     });
-
-    const done = state[phase].filter(Boolean).length;
-    progress.textContent = `${done} / ${phases[phase].length} completed`;
   }
 
-  select.addEventListener("change", render);
-  panel.querySelector("#gfc-cl-reset").onclick = () => {
-    state[select.value].fill(false);
+  $("#gfc-phase").addEventListener("change", render);
+
+  $("#gfc-reset").addEventListener("click", () => {
+    const idx = Number($("#gfc-phase").value) || 0;
+    checked[idx].fill(false);
     render();
-  };
-  panel.querySelector("#gfc-cl-close").onclick = () => panel.remove();
+  });
+
+  $("#gfc-check-close").onclick = () => box.remove();
+
+  // Drag the checklist by its title bar.
+  const bar = $("#gfc-check-drag");
+  let drag = null;
+
+  bar.addEventListener("pointerdown", e => {
+    if (e.target.closest("button")) return;
+
+    drag = {
+      x: e.clientX - box.offsetLeft,
+      y: e.clientY - box.offsetTop
+    };
+
+    bar.setPointerCapture(e.pointerId);
+  });
+
+  bar.addEventListener("pointermove", e => {
+    if (drag) {
+      box.style.left = Math.max(0, e.clientX - drag.x) + "px";
+      box.style.right = "auto";
+      box.style.top = Math.max(0, e.clientY - drag.y) + "px";
+    }
+  });
+
+  ["pointerup", "pointercancel"].forEach(ev =>
+    bar.addEventListener(ev, () => drag = null)
+  );
 
   render();
 })();
