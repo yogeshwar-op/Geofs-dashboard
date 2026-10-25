@@ -426,18 +426,24 @@
     bar.addEventListener(ev, () => drag = null)
   );
 
-  /* ---------- Mounting (docks into the GeoFS Companion PFD page) ---------- */
+  /* ---------- Mounting (docks into the CHECKLISTS tab of the companion popup) ---------- */
+
+  const companionSlot = () => {
+    const c = window.__gfcCompanion;
+    return c && c.isOpen() ? c.slots.checklist : null;
+  };
 
   function mount() {
-    const slot = document.getElementById("gfc-checklist-slot");
+    const slot = companionSlot();
 
     if (slot) {
       embedded = true;
       slot.textContent = "";
-      slot.appendChild(root);
+      slot.appendChild(root); // moves the element into the popup document
       root.style.cssText = EMBED_CSS;
       bar.style.cursor = "default";
       $("#gfc-check-close").style.display = "none";
+      try { window.__gfcCompanion.showTab("chk"); } catch (err) { /* ignore */ }
     } else {
       embedded = false;
       document.body.appendChild(root);
@@ -467,12 +473,12 @@
       setVoice(false);
       if (synth) { speakId++; synth.cancel(); speaking = false; }
 
+      const slot = companionSlot();
       root.remove();
 
-      const slot = document.getElementById("gfc-checklist-slot");
       if (slot) {
         slot.innerHTML =
-          '<div style="padding:12px;color:#8fa0b2;font-size:12px;border:1px dashed #394654;border-radius:8px">Checklist closed.<br>Run <b>checklists.js</b> again to bring it back.</div>';
+          '<div style="padding:14px;color:#8fa0b2;border:1px dashed #394654;border-radius:8px">Checklist closed.<br>Run <b>checklists.js</b> again to bring it back.</div>';
       }
     },
 
