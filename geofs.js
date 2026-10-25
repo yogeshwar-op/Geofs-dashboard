@@ -57,7 +57,35 @@
 #gfc-root .hdr .st{font:11px monospace;font-weight:normal;color:#a3b2c2;margin-left:auto}
 #gfc-root .tabs{display:flex;gap:4px;padding:6px 8px;background:#111821;border-bottom:1px solid #303b48;overflow-x:auto;flex:0 0 auto}
 #gfc-root .tab{padding:9px 14px;background:#1b242e;color:#d8e2ed;border:1px solid #394654;border-radius:6px;cursor:pointer;font-weight:bold;font-size:12px;white-space:nowrap}
-#gfc-root .tab.on{background:#26394a;border-color:#6c8ba6;color:#fff}
+#gfc-root .tab.on{background:#26394a;border-color:var(--acc,#6c8ba6);border-bottom:3px solid var(--acc,#6c8ba6);color:#fff}
+#gfc-root .plane{background:var(--pl,#3a4047);border:1px solid #0d0f11;border-radius:3px;box-shadow:inset 0 1px 0 #ffffff22;padding:8px 10px 10px;margin-bottom:10px}
+#gfc-root .plane h5{margin:0 0 8px;font:bold 10px Arial,sans-serif;text-align:center;letter-spacing:.5px;border-bottom:1px solid #ffffff33;padding-bottom:3px;color:#e6e9ec}
+#gfc-root .pl-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start;justify-content:center}
+#gfc-root .cap0{font:9px Arial,sans-serif;color:#c9d1d9;text-align:center;margin-bottom:3px}
+#gfc-root .pbtn{position:relative;width:60px;margin:3px;cursor:pointer;user-select:none;touch-action:manipulation}
+#gfc-root .pbtn .bar{height:6px;margin:0 6px;border-radius:2px;background:#1c1f22;transition:background .2s,box-shadow .2s}
+#gfc-root .pbtn.lit .bar{background:var(--lc,#3fd16a);box-shadow:0 0 8px var(--lc,#3fd16a)}
+#gfc-root .pbtn .cap{height:30px;background:linear-gradient(#4d545b,#31373c);border:1px solid #0b0c0d;border-radius:3px;text-align:center;font:bold 9px Arial,sans-serif;line-height:30px;color:#e6e9ec;transition:transform .08s}
+#gfc-root .pbtn:active .cap{transform:translateY(2px)}
+#gfc-root .pbtn.off{opacity:.45;cursor:not-allowed}
+#gfc-root .win{background:#050505;border:1px solid #000;box-shadow:inset 0 0 0 1px #3b4148;text-align:center;font:bold 17px monospace;color:var(--dg,#ffb000);padding:3px 4px;letter-spacing:1px;min-width:58px}
+#gfc-root .rk{width:42px;height:42px;margin:4px auto;border-radius:50%;background:repeating-conic-gradient(#2b3036 0 10deg,#191d21 10deg 20deg);border:2px solid #0a0b0c;box-shadow:0 2px 4px #000;position:relative;cursor:grab;touch-action:none;transition:transform .12s}
+#gfc-root .rk i{position:absolute;left:18px;top:2px;width:4px;height:11px;background:#fff;border-radius:2px}
+#gfc-root .rsel{position:relative;margin:auto}
+#gfc-root .rsel span.l{position:absolute;font:bold 9px Arial,sans-serif;color:#e6e9ec;cursor:pointer;transform:translate(-50%,-50%);padding:2px 3px;white-space:nowrap}
+#gfc-root .rsel span.l.on{color:var(--acc,#ffb000)}
+#gfc-root .rsel .hub{position:absolute;left:50%;top:50%;width:38px;height:38px;margin:-19px;border-radius:50%;background:radial-gradient(#3a3f45,#14171a);border:2px solid #0a0b0c;box-shadow:0 2px 4px #000;transition:transform .35s cubic-bezier(.3,1.4,.5,1);pointer-events:none}
+#gfc-root .rsel .hub i{position:absolute;left:15px;top:2px;width:4px;height:15px;background:#fff;border-radius:2px}
+#gfc-root .gate{position:relative;cursor:pointer;touch-action:none}
+#gfc-root .gate .rail{position:absolute;left:0;width:26px;background:#0b0d0f;border:2px solid #5a626b;border-radius:6px}
+#gfc-root .gate .hnd{position:absolute;left:-7px;width:40px;height:22px;margin-top:-11px;background:linear-gradient(#9aa1a8,#5f666d);border:2px solid #15181b;border-radius:5px;box-shadow:0 2px 4px #000;transition:top .45s cubic-bezier(.4,0,.2,1);pointer-events:none}
+#gfc-root .gate .gl{position:absolute;left:44px;font:bold 9px Arial,sans-serif;color:#e6e9ec;transform:translateY(-50%);cursor:pointer;white-space:nowrap}
+#gfc-root .gate .gl.on{color:var(--acc,#ffb000)}
+#gfc-root .lampw{text-align:center;width:54px}
+#gfc-root .lampw small{display:block;font:8px Arial,sans-serif;color:#c9d1d9;margin-top:3px}
+#gfc-root .lamp{width:36px;height:14px;margin:auto;border-radius:2px;background:#1c1f22;transition:background .2s,box-shadow .2s}
+#gfc-root .lamp.on{background:var(--lc);box-shadow:0 0 8px var(--lc)}
+#gfc-root .guard{width:54px;height:44px;margin:3px;background:#7a1010;border:2px solid #000;border-radius:4px;text-align:center;font:bold 9px Arial,sans-serif;line-height:16px;padding-top:6px;color:#fff;box-shadow:0 0 0 4px #4a4f55;opacity:.5}
 #gfc-root .panes{flex:1;min-height:0;position:relative}
 #gfc-root .pane{position:absolute;inset:0;display:none;overflow:auto;padding:10px;background:#0d1218}
 #gfc-root .pane.on{display:block}
@@ -101,6 +129,10 @@
 #gfc-root .ecam{background:#05070a;border:1px solid #2a3440;border-radius:8px;padding:10px}
 #gfc-root .ecam h4{margin:0 0 6px;font:bold 12px monospace;color:#9bd1ff;letter-spacing:1px}
 #gfc-root .warnline{font:bold 15px monospace;padding:2px 0}
+#gfc-root .fma{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+#gfc-root .fma div{background:#05070a;border:1px solid #2a3440;border-radius:6px;padding:6px 8px;text-align:center}
+#gfc-root .fma small{display:block;color:#8fa0b2;font-size:10px;letter-spacing:.5px}
+#gfc-root .fma b{font:bold 14px monospace}
 `;
 
   const styleEl = doc.createElement("style");
@@ -125,8 +157,8 @@
 
   root.innerHTML = `
   <div id="gfc-zoom">
-    <div class="hdr" id="gfc-drag">GEOFS COMPANION <span class="st" id="gfc-status">WAITING FOR GEOFS DATA</span>${floating ? '<button class="btn sm" id="gfc-close">✕</button>' : ""}</div>
-    <nav class="tabs" id="gfc-tabs">${TABS.map(t => `<button class="tab" data-tab="${t[0]}">${t[1]}</button>`).join("")}</nav>
+    <div class="hdr" id="gfc-drag">GEOFS COMPANION <b id="gfc-prof" style="color:var(--acc,#6c8ba6);margin-left:6px;font-size:12px"></b> <span class="st" id="gfc-status">WAITING FOR GEOFS DATA</span>${floating ? '<button class="btn sm" id="gfc-close">✕</button>' : ""}</div>
+    <nav class="tabs" id="gfc-tabs"></nav>
     <div class="panes">
 
       <section class="pane flex" data-pane="map" style="padding:0">
@@ -156,22 +188,50 @@
       </section>
 
       <section class="pane" data-pane="ap">
-        <div class="row" style="margin-bottom:10px">
+        <div class="fma" id="gfc-fma"></div>
+        <div class="row" style="margin-bottom:8px">
           <button class="btn" id="gfc-ap-toggle" style="min-width:100px;font-weight:bold">AP OFF</button>
+          <button class="btn" id="gfc-ap-engage" title="Copy current heading, altitude and speed, then engage">ENGAGE HERE</button>
+          <button class="btn" id="gfc-ap-level" title="Hold the current altitude">LEVEL OFF</button>
           <label class="dim">MODE <select id="gfc-ap-mode"><option value="HDG">HDG</option><option value="NAV">NAV</option></select></label>
           <label class="dim">SPD <select id="gfc-ap-spdmode"><option value="knots">KNOTS</option><option value="mach">MACH</option></select></label>
           <button class="btn" id="gfc-ap-sync">SYNC TO CURRENT</button>
           <button class="btn" id="gfc-ap-vsclr">V/S AUTO</button>
         </div>
+        <div class="card">
+          <div class="row">
+            <b class="dim">TURN</b>
+            <button class="btn sm" data-turn="-30">◄ 30°</button><button class="btn sm" data-turn="-10">◄ 10°</button>
+            <button class="btn sm" data-turn="10">10° ►</button><button class="btn sm" data-turn="30">30° ►</button>
+            <b class="dim" style="margin-left:12px">V/S</b>
+            <button class="btn sm" data-vs="-2000">−2000</button><button class="btn sm" data-vs="-1000">−1000</button>
+            <button class="btn sm" data-vs="1000">+1000</button><button class="btn sm" data-vs="2000">+2000</button>
+            <b class="dim" style="margin-left:12px">ALT</b>
+            <button class="btn sm" data-alt="-1000">−1000</button><button class="btn sm" data-alt="1000">+1000</button>
+          </div>
+        </div>
         <div id="gfc-ap-info" class="mono grn" style="margin-bottom:10px"></div>
         <div id="gfc-ap-cards"></div>
         <div id="gfc-ap-msg" class="mono amb"></div>
-        <div class="dim" style="font-size:11px;margin-top:6px">Drag a knob in a circle, or use the mouse wheel (Shift = coarse). Touch works too.</div>
+        <div class="dim" style="font-size:11px;margin-top:6px">Drag a knob in a circle, or use the mouse wheel (Shift = coarse). Type FL350 or 35000 in the altitude box. With V/S on AUTO, GeoFS climbs or descends to the selected altitude by itself.</div>
       </section>
+
+      <section class="pane" data-pane="eng"><div id="gfc-p-eng"></div></section>
+      <section class="pane" data-pane="gear"><div id="gfc-p-gear"></div></section>
+      <section class="pane" data-pane="mcp"><div id="gfc-p-mcp"></div></section>
 
       <section class="pane" data-pane="sys"><div id="gfc-sys"></div></section>
 
       <section class="pane" data-pane="ctl">
+        <div class="card">
+          <div class="row" style="justify-content:space-between;margin-bottom:6px"><b>ENGINES / THRUST</b><span class="mono dim" id="gfc-eng-note"></span></div>
+          <div class="row" style="align-items:flex-start;gap:30px;justify-content:center" id="gfc-eng-levers"></div>
+          <div class="row" style="margin-top:10px;justify-content:center">
+            <button class="btn sm" data-thr="0">IDLE</button><button class="btn sm" data-thr="0.5">50%</button>
+            <button class="btn sm" data-thr="0.85">CLB</button><button class="btn sm" data-thr="1">TOGA</button>
+            <button class="btn sm" id="gfc-thr-rev">REVERSE</button>
+          </div>
+        </div>
         <div class="card"><div class="row" style="align-items:flex-start;gap:40px;justify-content:center" id="gfc-levers"></div></div>
         <div class="card">
           <div class="row" style="margin-bottom:8px"><b>VIRTUAL BUTTONS</b><span style="flex:1"></span><button class="btn sm" id="gfc-btn-edit">EDIT</button></div>
@@ -351,7 +411,7 @@
     renderActive();
   }
 
-  $$(".tab").forEach(b => b.addEventListener("click", () => showTab(b.dataset.tab)));
+  $("#gfc-tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if (b) showTab(b.dataset.tab); });
 
   /* ================= MAP + INFO ================= */
   let map = null, marker = null, trail = null, fpLine = null;
@@ -837,6 +897,13 @@
 
   const apEls = {};
 
+  function parseApInput(spec, raw) {
+    raw = String(raw).trim().toUpperCase();
+    const m = raw.match(/^FL\s*(\d{2,3})$/);
+    if (m && spec.key === "altitude") return Number(m[1]) * 100;
+    return Number(raw);
+  }
+
   function buildAP() {
     const host = $("#gfc-ap-cards");
     const ticks = Array.from({ length: 24 }, (_, i) =>
@@ -857,8 +924,9 @@
           <div><span class="sel" data-s>---</span> <small class="dim" data-u></small></div>
           <div class="row" style="margin-top:8px">
             <button class="btn sm" data-c="-1">−COARSE</button><button class="btn sm" data-c="1">+COARSE</button>
-            <input type="number" step="any" placeholder="value" style="width:90px" data-i><button class="btn sm" data-set>SET</button>
+            <input type="text" inputmode="decimal" placeholder="value" style="width:90px" data-i><button class="btn sm" data-set>SET</button>
           </div>
+          <div class="mono dim" data-err style="margin-top:6px"></div>
         </div>`;
       host.appendChild(card);
 
@@ -911,11 +979,11 @@
       card.querySelectorAll("[data-c]").forEach(b => b.addEventListener("click", () => adjust(Number(b.dataset.c), "coarse")));
 
       const input = card.querySelector("[data-i]");
-      const apply = () => { if (input.value !== "") { apSet(spec, input.value); input.value = ""; } };
+      const apply = () => { if (input.value !== "") { apSet(spec, parseApInput(spec, input.value)); input.value = ""; } };
       card.querySelector("[data-set]").onclick = apply;
       input.addEventListener("keydown", e => { if (e.key === "Enter") apply(); });
 
-      apEls[spec.key] = { a: card.querySelector("[data-a]"), s: card.querySelector("[data-s]"), u: card.querySelector("[data-u]") };
+      apEls[spec.key] = { a: card.querySelector("[data-a]"), s: card.querySelector("[data-s]"), u: card.querySelector("[data-u]"), e: card.querySelector("[data-err]") };
     });
   }
   buildAP();
@@ -948,6 +1016,70 @@
     renderActive();
   };
 
+  function engageHere() {
+    const ap = apApi();
+    if (!S || !ap) return;
+    if (S.hdg !== null) apSet(apSpecs[0], S.hdg);
+    if (S.alt !== null) apSet(apSpecs[1], Math.round(S.alt / 100) * 100);
+    const spd = isMach(ap) ? S.mach : S.ias;
+    if (spd !== null) apSet(apSpecs[2], spd);
+    if (ap.values) ap.values.verticalSpeed = null;
+    try { if (!ap.on) ap.turnOn(); } catch (err) { $("#gfc-ap-msg").textContent = "AP engage failed: " + err.message; }
+    renderActive();
+  }
+
+  function levelOff() {
+    const ap = apApi();
+    if (!S || !ap || S.alt === null) return;
+    apSet(apSpecs[1], Math.round(S.alt / 100) * 100);
+    if (ap.values) ap.values.verticalSpeed = null;
+    renderActive();
+  }
+
+  const selVal = key => num(apApi()?.values?.[key]);
+
+  $("#gfc-ap-engage").onclick = engageHere;
+  $("#gfc-ap-level").onclick = levelOff;
+  $$("[data-turn]").forEach(b => b.addEventListener("click", () => {
+    const base = selVal("course") ?? S?.hdg ?? 0;
+    apSet(apSpecs[0], base + Number(b.dataset.turn));
+  }));
+  $$("[data-vs]").forEach(b => b.addEventListener("click", () => apSet(apSpecs[3], Number(b.dataset.vs))));
+  $$("[data-alt]").forEach(b => b.addEventListener("click", () => {
+    const base = selVal("altitude") ?? Math.round((S?.alt ?? 0) / 100) * 100;
+    apSet(apSpecs[1], base + Number(b.dataset.alt));
+  }));
+
+  const hdgDelta = (target, cur) => ((target - cur + 540) % 360) - 180;
+
+  function renderFMA(s, ap) {
+    const v = ap.values || {};
+    const on = !!ap.on;
+    const tAlt = num(v.altitude), vs = num(v.verticalSpeed), tvs = num(ap.targetVerticalSpeed);
+    const course = num(v.course), spd = num(v.speed);
+
+    let lat = "---", vert = "---", sp = "---";
+    let vcls = "dim";
+    if (on) {
+      lat = ap.mode === "NAV" ? "NAV" : "HDG " + (course === null ? "---" : pad3(course));
+      sp = spd === null ? "---" : isMach(ap) ? "M " + spd.toFixed(2) : "SPD " + Math.round(spd);
+      if (vs !== null) { vert = `V/S ${vs > 0 ? "+" : ""}${Math.round(vs)}`; vcls = "grn"; }
+      else if (tAlt !== null && s && s.alt !== null) {
+        const d = tAlt - s.alt;
+        vert = Math.abs(d) <= 100 ? "ALT HOLD" : d > 0 ? "ALT SEL ▲ CLIMB" : "ALT SEL ▼ DESCENT";
+        vcls = Math.abs(d) <= 100 ? "grn" : "amb";
+      }
+    }
+
+    const box = (t, x, cls) => `<div><small>${t}</small><b class="${cls}">${esc(x)}</b></div>`;
+    $("#gfc-fma").innerHTML =
+      box("AUTOPILOT", on ? "ENGAGED" : "OFF", on ? "grn" : "dim") +
+      box("LATERAL", lat, on ? "grn" : "dim") +
+      box("VERTICAL", vert, vcls) +
+      box("SPEED", sp, on ? "grn" : "dim");
+    void tvs;
+  }
+
   function renderAP(s) {
     const ap = apApi();
     const tog = $("#gfc-ap-toggle");
@@ -955,6 +1087,7 @@
 
     tog.textContent = ap.on ? "AP ON" : "AP OFF";
     tog.classList.toggle("on", !!ap.on);
+    renderFMA(s, ap);
 
     const ms = $("#gfc-ap-mode");
     if (doc.activeElement !== ms && ap.mode) ms.value = ap.mode;
@@ -971,6 +1104,27 @@
       el.a.textContent = act === null ? "---" : fmtAp(spec, act, ap);
       el.s.textContent = fmtAp(spec, ap.values?.[spec.key], ap);
       el.u.textContent = spec.key === "course" ? "°" : spec.key === "altitude" ? "ft" : spec.key === "speed" ? (isMach(ap) ? "M" : "kt") : "fpm";
+
+      // distance-to-target line
+      const sel = num(ap.values?.[spec.key]);
+      let txt = "";
+      if (sel !== null && act !== null) {
+        if (spec.key === "course") {
+          const d = hdgDelta(sel, act);
+          txt = Math.abs(d) < 1 ? "on heading" : `turn ${d > 0 ? "right" : "left"} ${Math.abs(Math.round(d))}°`;
+        } else if (spec.key === "altitude") {
+          const d = sel - act, tv = num(ap.targetVerticalSpeed), vsSel = num(ap.values?.verticalSpeed);
+          const rate = Math.abs(vsSel ?? tv ?? 0);
+          txt = Math.abs(d) < 50 ? "at altitude" : `${d > 0 ? "climb" : "descend"} ${Math.abs(Math.round(d))} ft` + (rate > 100 ? ` • about ${hms(Math.abs(d) / rate * 60).slice(3)}` : "");
+        } else if (spec.key === "speed") {
+          const d = sel - act;
+          txt = isMach(ap) ? `Δ ${d.toFixed(2)} M` : `Δ ${d > 0 ? "+" : ""}${Math.round(d)} kt`;
+        }
+      } else if (spec.key === "verticalSpeed") {
+        const tv = num(ap.targetVerticalSpeed);
+        txt = sel === null && tv !== null ? `AUTO • commanding ${Math.round(tv)} fpm` : "";
+      }
+      el.e.textContent = txt;
     });
   }
 
@@ -1070,8 +1224,10 @@
 
     const valFromEvent = e => {
       const r = track.getBoundingClientRect();
-      return clamp((e.clientY - r.top) / r.height, 0, 1) * max;
+      const f = clamp((e.clientY - r.top) / r.height, 0, 1);
+      return (cfg.invert ? 1 - f : f) * max;
     };
+    const pos = v => (cfg.invert ? 1 - clamp(v / max, 0, 1) : clamp(v / max, 0, 1)) * 100;
 
     let dragging = false;
     track.addEventListener("pointerdown", e => { dragging = true; track.setPointerCapture(e.pointerId); cfg.onSet(cfg.snap(valFromEvent(e))); });
@@ -1082,11 +1238,11 @@
       wrap,
       layout(newMax, labels) {
         max = newMax;
-        ticks.innerHTML = labels.map(l => `<div style="top:${(l.v / max) * 100}%"><span>${l.t}</span></div>`).join("");
+        ticks.innerHTML = labels.map(l => `<div style="top:${pos(l.v)}%"><span>${l.t}</span></div>`).join("");
       },
       update(target, actual) {
-        handle.style.top = (max ? clamp(target / max, 0, 1) * 100 : 0) + "%";
-        act.style.top = (max ? clamp(actual / max, 0, 1) * 100 : 0) + "%";
+        handle.style.top = (max ? pos(target) : 0) + "%";
+        act.style.top = (max ? pos(actual) : 0) + "%";
         read.textContent = cfg.fmt(target, actual);
       }
     };
@@ -1109,6 +1265,62 @@
     const c = ctlObj();
     if (!c?.airbrakes) return;
     c.airbrakes.target = clamp(v, 0, 1);
+  }
+
+  /* ---- engine / thrust levers (2 or 4 depending on the aircraft) ---- */
+  function setThrottle(v) {
+    const c = ctlObj();
+    if (!c) return;
+    v = clamp(v, 0, 1);
+    if (v < 0.03) v = 0;
+    if (v > 0.97) v = 1;
+    c.throttle = v;
+  }
+
+  let engLevers = [];
+  let engShown = -1;
+
+  function rebuildEngines(n) {
+    const host = $("#gfc-eng-levers");
+    host.innerHTML = "";
+    engLevers = [];
+    for (let i = 0; i < n; i++) {
+      const lv = makeLever(host, {
+        title: n > 1 ? "ENG " + (i + 1) : "THRUST",
+        invert: true,
+        snap: v => Math.round(v * 50) / 50,
+        onSet: setThrottle,
+        fmt: (t, a) => `THR ${Math.round(t * 100)}%`
+      });
+      lv.layout(1, [{ v: 0, t: "IDLE" }, { v: 0.5, t: "50" }, { v: 1, t: "TOGA" }]);
+      engLevers.push(lv);
+    }
+  }
+
+  $$("[data-thr]").forEach(b => b.addEventListener("click", () => setThrottle(Number(b.dataset.thr))));
+  $("#gfc-thr-rev").onclick = () => {
+    try { window.controls.setters.toggleReverse.set(); $("#gfc-btn-msg").textContent = ""; }
+    catch (err) { $("#gfc-eng-note").textContent = "Reverse not available: " + err.message; }
+  };
+
+  function renderEngines(s) {
+    const c = ctlObj();
+    const list = s?.ac?.engines ? Array.from(s.ac.engines) : [];
+    const n = clamp(list.length || 1, 1, 4);
+    if (n !== engShown) { engShown = n; rebuildEngines(n); }
+
+    const target = num(c?.throttle) ?? s?.throttle ?? 0;
+    engLevers.forEach((lv, i) => {
+      const e = list[i];
+      const rpm = e ? num(e.rpm) : s?.rpm ?? null;
+      const max = firstPos(e?.maxRpm, e?.maxRPM, e?.definition?.maxRpm, e?.definition?.maxRPM, s?.ac?.definition?.maxRPM);
+      const actual = rpm !== null && max ? clamp(rpm / max, 0, 1) : (s?.throttle ?? target);
+      lv.update(target, actual);
+    });
+
+    $("#gfc-eng-note").textContent = n > 1
+      ? `${n} engines • GeoFS has one throttle, so the levers move together (green marker = that engine's RPM)`
+      : "1 engine • green marker = actual RPM";
   }
 
   const flapsLever = makeLever($("#gfc-levers"), {
@@ -1185,9 +1397,28 @@
   let buttons = store.get("buttons", null) || DEFAULT_BTNS.map(b => Object.assign({}, b));
   const saveButtons = () => store.set("buttons", buttons);
 
+  const btnEls = [];
+  let learning = null;           // index of the virtual button waiting for a hardware press
+  const hwState = new Map();     // index -> was pressed last poll
+
+  function nativeSetters() {
+    const st = window.controls?.setters;
+    if (!st) return [];
+    return Object.keys(st)
+      .filter(k => st[k] && typeof st[k].set === "function")
+      .map(k => ({ name: k, label: st[k].label || k }))
+      .sort((x, y) => x.label.localeCompare(y.label));
+  }
+
   function runBtn(b, phase) {
     try {
-      if (b.action) {
+      if (b.setter) {
+        // Same call GeoFS makes for its own keyboard/joystick bindings: set on press, unset on release.
+        const st = window.controls?.setters?.[b.setter];
+        if (!st) throw new Error("controls.setters." + b.setter + " not found");
+        if (phase === "down") st.set();
+        else if (typeof st.unset === "function") st.unset();
+      } else if (b.action) {
         const a = ACTIONS[b.action];
         if (a && a[phase]) a[phase]();
       } else {
@@ -1200,14 +1431,19 @@
     }
   }
 
+  const hwText = b => (b.hw ? `${b.hw.id.slice(0, 28)} #${b.hw.idx}` : "not mapped");
+
   function renderButtons() {
     const host = $("#gfc-vbtns");
     host.innerHTML = "";
+    btnEls.length = 0;
+    hwState.clear();
 
-    buttons.forEach(b => {
+    buttons.forEach((b, i) => {
       const el = doc.createElement("button");
       el.className = "btn";
       el.textContent = b.label;
+      el.title = "Hardware: " + hwText(b);
       let isDown = false;
       el.addEventListener("pointerdown", e => {
         e.preventDefault();
@@ -1223,19 +1459,65 @@
       };
       ["pointerup", "pointerleave", "pointercancel"].forEach(ev => el.addEventListener(ev, release));
       host.appendChild(el);
+      btnEls[i] = el;
+    });
+  }
+
+  // Poll physical gamepad / joystick buttons (fast, so quick taps are not missed).
+  function hwPoll() {
+    if (closed) return;
+    let pads = [];
+    try { pads = Array.from(navigator.getGamepads ? navigator.getGamepads() : []).filter(Boolean); } catch (e) { pads = []; }
+
+    if (learning !== null) {
+      for (const p of pads) {
+        for (let k = 0; k < p.buttons.length; k++) {
+          if (p.buttons[k].pressed && buttons[learning]) {
+            buttons[learning].hw = { id: p.id, idx: k };
+            hwState.set(learning, true); // ignore the press that created the binding
+            learning = null;
+            saveButtons();
+            renderBtnEditor();
+            $("#gfc-btn-msg").textContent = "";
+            return;
+          }
+        }
+      }
+      return;
+    }
+
+    buttons.forEach((b, i) => {
+      if (!b.hw) return;
+      const p = pads.find(x => x.id === b.hw.id);
+      const pressed = !!(p && p.buttons[b.hw.idx] && p.buttons[b.hw.idx].pressed);
+      const was = hwState.get(i) || false;
+      if (pressed && !was) { btnEls[i]?.classList.add("flash"); runBtn(b, "down"); }
+      else if (!pressed && was) { btnEls[i]?.classList.remove("flash"); runBtn(b, "up"); }
+      hwState.set(i, pressed);
     });
   }
 
   function renderBtnEditor() {
     const ed = $("#gfc-btn-editor");
+    const setters = nativeSetters();
+
     ed.innerHTML = `
-      <div class="dim" style="margin-bottom:6px">Custom buttons run JavaScript in the GeoFS page (<span class="mono">geofs</span>, <span class="mono">controls</span> and <span class="mono">ui.speak(text)</span> are available). Example: <span class="mono">controls.setters.setGear.set()</span></div>
+      <div class="dim" style="margin-bottom:6px">Map a physical joystick / gamepad button to any virtual button: press <b>MAP HW</b>, then press the hardware button. Buttons call GeoFS's own control setters, exactly like its keyboard and joystick bindings do. Gamepads only appear after you press a button once while the page is focused.</div>
       <div id="gfc-btn-list"></div>
+      <div class="row" style="margin-top:10px">
+        <select id="gfc-nb-native" style="min-width:200px;max-width:300px">
+          <option value="">Add native GeoFS control…</option>
+          ${setters.map(x => `<option value="${esc(x.name)}">${esc(x.label)} (${esc(x.name)})</option>`).join("")}
+        </select>
+        <input id="gfc-nb-nlabel" placeholder="Label (optional)" style="width:130px">
+        <button class="btn sm" id="gfc-nb-addnative">ADD</button>
+        ${setters.length ? "" : '<span class="amb mono">controls.setters not found yet</span>'}
+      </div>
       <div class="row" style="margin-top:8px">
-        <input id="gfc-nb-label" placeholder="Label" style="width:110px">
-        <input id="gfc-nb-code" placeholder="Code on press" style="flex:1;min-width:160px">
-        <input id="gfc-nb-up" placeholder="Code on release (optional)" style="flex:1;min-width:130px">
-        <button class="btn sm" id="gfc-nb-add">ADD</button>
+        <input id="gfc-nb-label" placeholder="Custom: label" style="width:110px">
+        <input id="gfc-nb-code" placeholder="Custom: code on press" style="flex:1;min-width:150px">
+        <input id="gfc-nb-up" placeholder="code on release (optional)" style="flex:1;min-width:120px">
+        <button class="btn sm" id="gfc-nb-add">ADD CUSTOM</button>
         <button class="btn sm" id="gfc-nb-reset">RESET DEFAULTS</button>
       </div>`;
 
@@ -1243,11 +1525,29 @@
     buttons.forEach((b, i) => {
       const r = doc.createElement("div");
       r.className = "row mono";
-      r.style.padding = "2px 0";
-      r.innerHTML = `<button class="btn sm" data-del>✕</button><span>${esc(b.label)}</span><span class="dim">${b.action ? "[" + esc(b.action) + "]" : esc((b.code || "").slice(0, 50))}</span>`;
-      r.querySelector("[data-del]").onclick = () => { buttons.splice(i, 1); saveButtons(); renderButtons(); renderBtnEditor(); };
+      r.style.cssText = "padding:3px 0;border-bottom:1px solid #243040";
+      const what = b.setter ? "native: " + b.setter : b.action ? "[" + b.action + "]" : "custom";
+      r.innerHTML = `<button class="btn sm" data-del title="Delete">✕</button>
+        <span style="min-width:120px"><b>${esc(b.label)}</b></span>
+        <span class="dim" style="min-width:150px">${esc(what)}</span>
+        <button class="btn sm ${learning === i ? "on" : ""}" data-map>${learning === i ? "PRESS A BUTTON…" : "MAP HW"}</button>
+        <span class="${b.hw ? "grn" : "dim"}">${esc(hwText(b))}</span>
+        ${b.hw ? '<button class="btn sm" data-clr>CLEAR</button>' : ""}`;
+      r.querySelector("[data-del]").onclick = () => { buttons.splice(i, 1); learning = null; saveButtons(); renderButtons(); renderBtnEditor(); };
+      r.querySelector("[data-map]").onclick = () => { learning = learning === i ? null : i; renderBtnEditor(); };
+      const clr = r.querySelector("[data-clr]");
+      if (clr) clr.onclick = () => { delete b.hw; saveButtons(); renderButtons(); renderBtnEditor(); };
       list.appendChild(r);
     });
+
+    ed.querySelector("#gfc-nb-addnative").onclick = () => {
+      const name = ed.querySelector("#gfc-nb-native").value;
+      if (!name) return;
+      const found = setters.find(x => x.name === name);
+      const label = ed.querySelector("#gfc-nb-nlabel").value.trim() || (found ? found.label : name);
+      buttons.push({ label, setter: name });
+      saveButtons(); renderButtons(); renderBtnEditor();
+    };
 
     ed.querySelector("#gfc-nb-add").onclick = () => {
       const label = ed.querySelector("#gfc-nb-label").value.trim();
@@ -1257,8 +1557,10 @@
       buttons.push({ label, code, upCode });
       saveButtons(); renderButtons(); renderBtnEditor();
     };
+
     ed.querySelector("#gfc-nb-reset").onclick = () => {
-      buttons = DEFAULT_BTNS.map(b => Object.assign({}, b));
+      buttons = DEFAULT_BTNS.map(x => Object.assign({}, x));
+      learning = null;
       saveButtons(); renderButtons(); renderBtnEditor();
     };
   }
@@ -1271,6 +1573,7 @@
   };
 
   renderButtons();
+  const hwTimer = setInterval(hwPoll, 30);
 
   /* ================= VOICE ANNUNCIATOR ================= */
   const synth = window.speechSynthesis;
@@ -1435,6 +1738,457 @@
 
   if (synth) synth.onvoiceschanged = fillVoices;
 
+  /* ================= AIRCRAFT PROFILES + REALISTIC PLANE PAGES ================= */
+  const GEN_TABS = [["map", "MAP / INFO"], ["pfd", "PFD"], ["ap", "AUTOPILOT"], ["sys", "SYSTEMS"], ["ctl", "LEVERS & BUTTONS"], ["chk", "CHECKLISTS"], ["voice", "VOICE"], ["data", "DATA & SETTINGS"]];
+  const BOE_TABS = [["eng", "ENGINES"], ["gear", "GEAR & FLAPS"], ["mcp", "MCP"], ["sys", "EICAS"], ["pfd", "PFD"], ["map", "MAP / INFO"], ["chk", "CHECKLISTS"], ["voice", "VOICE"], ["data", "DATA"]];
+  const AIR_TABS = [["eng", "ENGINES & GEAR"], ["mcp", "FCU"], ["sys", "ECAM"], ["pfd", "PFD"], ["map", "MAP / INFO"], ["chk", "CHECKLISTS"], ["voice", "VOICE"], ["data", "DATA"]];
+
+  const b737 = { name: "BOEING 737", kind: "boeing", acc: "#ffb000", dg: "#ffb000", pl: "#3a4047", eng: 2, tabs: BOE_TABS,
+    flaps: ["0", "1", "2", "5", "10", "15", "25", "30", "40"], abrk: ["RTO", "OFF", "1", "2", "3", "MAX"] };
+  const a320 = { name: "AIRBUS A320", kind: "airbus", acc: "#00d8ff", dg: "#ff9f1a", pl: "#2d343c", eng: 2, tabs: AIR_TABS,
+    flaps: ["0", "1", "2", "3", "FULL"], abrk: ["LO", "MED", "MAX"] };
+
+  const PROFILES = {
+    generic: { name: "GENERIC (GA / JET)", kind: "generic", acc: "#6c8ba6", dg: "#ffb000", pl: "#3a4047", eng: 1, tabs: GEN_TABS },
+    b737,
+    b747: Object.assign({}, b737, { name: "BOEING 747", eng: 4, flaps: ["0", "1", "5", "10", "20", "25", "30"] }),
+    b787: Object.assign({}, b737, { name: "BOEING 787", acc: "#4fd1ff", dg: "#4fd1ff", flaps: ["0", "1", "5", "15", "20", "25", "30"] }),
+    a320,
+    a330: Object.assign({}, a320, { name: "AIRBUS A330" }),
+    a340: Object.assign({}, a320, { name: "AIRBUS A340", eng: 4 }),
+    a350: Object.assign({}, a320, { name: "AIRBUS A350", acc: "#7fe3ff" }),
+    a380: Object.assign({}, a320, { name: "AIRBUS A380", eng: 4 })
+  };
+
+  function aircraftName() {
+    const ac = window.geofs?.aircraft?.instance;
+    return String(ac?.aircraftRecord?.name || ac?.definition?.name || "");
+  }
+
+  function detectProfile() {
+    if (settings.profile && settings.profile !== "auto" && PROFILES[settings.profile]) return settings.profile;
+    const n = aircraftName();
+    if (/747|b74[48]/i.test(n)) return "b747";
+    if (/787|dreamliner/i.test(n)) return "b787";
+    if (/737|b73\d/i.test(n)) return "b737";
+    if (/a38\d/i.test(n)) return "a380";
+    if (/a35\d/i.test(n)) return "a350";
+    if (/a34\d/i.test(n)) return "a340";
+    if (/a33\d/i.test(n)) return "a330";
+    if (/a31\d|a32\d|airbus/i.test(n)) return "a320";
+    return "generic";
+  }
+
+  let curProfile = "";
+  let planeUpd = [];
+  const reg = f => { planeUpd.push(f); };
+  const h = html => { const t = doc.createElement("div"); t.innerHTML = html.trim(); return t.firstElementChild; };
+  const pmsg = t => $$(".pmsg").forEach(e => { e.textContent = t; });
+
+  function runPlaneUpdaters() {
+    planeUpd.forEach(f => { try { f(S); } catch (e) { /* keep the page alive */ } });
+  }
+
+  const plane = title => {
+    const el = h(`<div class="plane"><h5>${esc(title)}</h5><div class="pl-row"></div></div>`);
+    return { el, row: el.querySelector(".pl-row") };
+  };
+  const col = (title, el) => { const d = h(`<div><div class="cap0">${esc(title)}</div></div>`); d.appendChild(el); return d; };
+
+  function pbtn(label, o = {}) {
+    const e = h(`<div class="pbtn"><div class="bar"></div><div class="cap">${esc(label)}</div></div>`);
+    e.style.setProperty("--lc", o.color || "#3fd16a");
+    if (o.w) e.style.width = o.w + "px";
+    if (o.off) { e.classList.add("off"); e.title = "Not simulated in GeoFS"; }
+    else if (o.click) e.addEventListener("click", o.click);
+    if (o.lit) reg(s => e.classList.toggle("lit", !!o.lit(s)));
+    return e;
+  }
+
+  function lampEl(label, color, lit) {
+    const e = h(`<div class="lampw"><div class="lamp"></div><small>${esc(label)}</small></div>`);
+    const l = e.firstChild;
+    l.style.setProperty("--lc", color);
+    reg(s => l.classList.toggle("on", !!lit(s)));
+    return e;
+  }
+
+  function winEl(get, w) {
+    const e = h('<div class="win">---</div>');
+    if (w) e.style.minWidth = w + "px";
+    reg(s => { e.textContent = get(s); });
+    return e;
+  }
+
+  function rsel(labels, angs, o = {}) {
+    const size = o.size || 100;
+    const e = h(`<div class="rsel" style="width:${size}px;height:${size}px"><div class="hub"><i></i></div></div>`);
+    const hub = e.querySelector(".hub");
+    let cur = o.start ?? 0;
+    const spans = labels.map((t, i) => {
+      const sp = h(`<span class="l">${esc(t)}</span>`);
+      const a = angs[i] * Math.PI / 180, R = size / 2 - 4;
+      sp.style.left = size / 2 + Math.sin(a) * R + "px";
+      sp.style.top = size / 2 - Math.cos(a) * R + "px";
+      sp.onclick = () => { show(i); if (o.onSelect) o.onSelect(i); };
+      e.appendChild(sp);
+      return sp;
+    });
+    function show(i) {
+      cur = i;
+      hub.style.transform = `rotate(${angs[i]}deg)`;
+      spans.forEach((x, j) => x.classList.toggle("on", j === i));
+    }
+    show(cur);
+    e.set = show;
+    e.get = () => cur;
+    return e;
+  }
+
+  function gate(labels, o = {}) {
+    const n = labels.length, H = o.h || 110;
+    const e = h(`<div class="gate" style="width:${o.w || 110}px;height:${H + 24}px"><div class="rail" style="top:6px;height:${H}px"></div><div class="hnd"></div></div>`);
+    const hnd = e.querySelector(".hnd");
+    const y = i => 6 + (n > 1 ? i * H / (n - 1) : 0);
+    const gl = labels.map((t, i) => {
+      const d = h(`<div class="gl">${esc(t)}</div>`);
+      d.style.top = y(i) + "px";
+      d.onclick = ev => { ev.stopPropagation(); pick(i); };
+      e.appendChild(d);
+      return d;
+    });
+    function show(i) {
+      i = clamp(i, 0, n - 1);
+      hnd.style.top = y(i) + "px";
+      gl.forEach((x, j) => x.classList.toggle("on", j === i));
+      e._i = i;
+    }
+    function pick(i) { show(i); if (o.onSelect) o.onSelect(i); }
+    e.querySelector(".rail").addEventListener("click", ev => {
+      const r = e.getBoundingClientRect();
+      pick(clamp(Math.round(((ev.clientY - r.top - 6) / H) * (n - 1)), 0, n - 1));
+    });
+    show(o.start ?? 0);
+    e.set = show;
+    return e;
+  }
+
+  function apAdjust(spec, dir, name) {
+    const ap = apApi();
+    const sel = num(ap?.values?.[spec.key]);
+    let base = sel ?? num(actualFor(spec, S)) ?? 0;
+    if (sel === null && spec.key === "altitude") base = Math.round(base / 100) * 100;
+    apSet(spec, base + dir * stepOf(spec, name, ap));
+  }
+
+  function apKnob(spec, label) {
+    const w = h(`<div style="text-align:center"><div class="rk"><i></i></div><div class="cap0">${esc(label)}</div></div>`);
+    const k = w.querySelector(".rk");
+    let ang = 0, drag = null;
+    const turn = (dir, name) => { ang += dir * 12; k.style.transform = `rotate(${ang}deg)`; apAdjust(spec, dir, name); };
+    k.addEventListener("pointerdown", e => {
+      e.preventDefault();
+      k.setPointerCapture(e.pointerId);
+      const r = k.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      drag = { cx, cy, last: Math.atan2(e.clientY - cy, e.clientX - cx), acc: 0 };
+    });
+    k.addEventListener("pointermove", e => {
+      if (!drag) return;
+      const a = Math.atan2(e.clientY - drag.cy, e.clientX - drag.cx);
+      let d = (a - drag.last) * 180 / Math.PI;
+      if (d > 180) d -= 360;
+      if (d < -180) d += 360;
+      drag.last = a; drag.acc += d;
+      while (Math.abs(drag.acc) >= 12) { const dir = Math.sign(drag.acc); drag.acc -= dir * 12; turn(dir, "dragStep"); }
+    });
+    ["pointerup", "pointercancel"].forEach(ev => k.addEventListener(ev, () => { drag = null; }));
+    k.addEventListener("wheel", e => { e.preventDefault(); turn(e.deltaY < 0 ? 1 : -1, e.shiftKey ? "coarse" : "fine"); }, { passive: false });
+    return w;
+  }
+
+  /* ---- shared simulator actions ---- */
+  const engRunning = s => !!(s?.ac?.engine?.on ?? s?.enginesOn);
+
+  function engCmd(on) {
+    const ac = window.geofs?.aircraft?.instance;
+    try {
+      if (on && typeof ac?.startEngine === "function") { ac.startEngine(); return true; }
+      if (!on && typeof ac?.stopEngine === "function") { ac.stopEngine(); return true; }
+      const st = window.controls?.setters;
+      const t = st?.setEngine || st?.toggleEngine;
+      if (t && typeof t.set === "function") { if (engRunning(S) !== on) t.set(); return true; }
+    } catch (err) { pmsg("Engine command failed: " + err.message); }
+    return false;
+  }
+
+  let lastGearCmd = 0;
+  function gearTo(down) {
+    const cur = S?.gearDown;
+    if (cur === null || cur === undefined) { pmsg("No gear data from GeoFS."); return; }
+    if ((down && cur > 0.5) || (!down && cur < 0.5)) return;
+    try { window.controls.setters.setGear.set(); lastGearCmd = Date.now(); pmsg(""); }
+    catch (err) { pmsg("Gear command failed: " + err.message); }
+  }
+
+  const parkBrake = () => { try { window.controls.setters.toggleParkingBrake.set(); } catch (err) { pmsg("Parking brake: " + err.message); } };
+  const apToggle = () => { const ap = apApi(); if (!ap) return; try { if (ap.on) ap.turnOff(); else ap.turnOn(); } catch (err) { pmsg("AP: " + err.message); } };
+
+  function flapGate(labels) {
+    const g = gate(labels, { h: 110, w: 110, onSelect: i => {
+      const max = ctlObj()?.flaps?.maxPosition || 0;
+      if (!max) { pmsg("This aircraft has no flaps."); return; }
+      setFlaps(Math.round(i * max / (labels.length - 1)));
+    } });
+    reg(() => {
+      const c = ctlObj(), max = c?.flaps?.maxPosition || 0;
+      if (max > 0) g.set(Math.round((c.flaps.target ?? 0) * (labels.length - 1) / max));
+    });
+    return g;
+  }
+
+  function speedbrakeGate(labels) {
+    const g = gate(labels, { h: 70, w: 120, onSelect: i => setSpoilers(i / (labels.length - 1)) });
+    reg(() => { const c = ctlObj(); if (c?.airbrakes) g.set(Math.round((c.airbrakes.target ?? 0) * (labels.length - 1))); });
+    return g;
+  }
+
+  /* ---- BOEING pages ---- */
+  function buildEngBoeing(host, n) {
+    const sws = [], levs = [];
+    let lastEng = 0;
+    const msg = h('<div class="mono amb pmsg" style="min-height:16px"></div>');
+
+    const leverTo = (i, idle) => {
+      if (idle) {
+        if (!engRunning(S)) {
+          if (sws[i].get() === 1) { pmsg("Set the start switch to GRD first."); levs[i].set(1); return; }
+          if (!engCmd(true)) { pmsg("Could not start the engine from here."); levs[i].set(1); return; }
+          pmsg(n > 1 ? "GeoFS starts all engines together." : "");
+        }
+      } else if (levs.every(l => l._i === 1)) engCmd(false);
+    };
+
+    const top = h('<div class="pl-row"></div>');
+    for (let i = 0; i < n; i++) {
+      const p = plane("ENGINE " + (i + 1));
+      p.el.style.flex = "1 1 290px";
+      const sw = rsel(["GRD", "OFF", "CONT", "FLT"], [-75, -25, 25, 75], { size: 112, start: 1 });
+      const lv = gate(["IDLE", "CUTOFF"], { h: 64, w: 90, start: 1, onSelect: j => { lastEng = Date.now(); leverTo(i, j === 0); } });
+      sws.push(sw); levs.push(lv);
+      const rd = h('<div class="mono" style="min-width:92px;line-height:1.7;color:#3fd16a"></div>');
+      reg(s => {
+        const r = num(s?.ac?.engines?.[i]?.rpm) ?? s?.rpm;
+        rd.innerHTML = `RPM ${r === null || r === undefined ? "---" : Math.round(r)}<br>${engRunning(s) ? "RUNNING" : "SHUT DOWN"}`;
+      });
+      p.row.append(col("START SWITCH", sw), col("START LEVER", lv), lampEl("START VALVE OPEN", "#4fa8ff", s => sw.get() === 0 && !engRunning(s)), rd);
+      top.appendChild(p.el);
+    }
+
+    reg(s => {
+      const run = engRunning(s), recent = Date.now() - lastEng < 4000;
+      if (run) sws.forEach(sw => { if (sw.get() === 0) sw.set(1); });
+      if (!recent) levs.forEach(l => { if (run && l._i !== 0) l.set(0); if (!run && l._i === 0) l.set(1); });
+    });
+
+    host.append(top, msg);
+  }
+
+  function buildGearBoeing(host, prof) {
+    const msg = h('<div class="mono amb pmsg" style="min-height:16px"></div>');
+    let gidx = 2;
+
+    const gp = plane("LANDING GEAR");
+    gp.el.style.flex = "1 1 330px";
+    const gl = gate(["UP", "OFF", "DN"], { h: 110, w: 90, start: 2, onSelect: i => {
+      gidx = i;
+      if (i === 0) gearTo(false); else if (i === 2) gearTo(true);
+    } });
+    const lamps = h('<div style="display:flex;flex-direction:column;gap:6px"></div>');
+    ["NOSE", "LEFT", "RIGHT"].forEach(nm2 => {
+      const r = h('<div style="display:flex;gap:6px;align-items:center"></div>');
+      r.append(lampEl(nm2, "#3fd16a", s => (s?.gearDown ?? 0) > 0.98), lampEl("UNLK", "#ff4b3a", s => { const g2 = s?.gearDown; return g2 !== null && g2 !== undefined && g2 > 0.02 && g2 < 0.98; }));
+      lamps.appendChild(r);
+    });
+    gp.row.append(col("GEAR LEVER", gl), lamps);
+    reg(s => {
+      if (Date.now() - lastGearCmd < 3000 || s?.gearDown === null || s?.gearDown === undefined) return;
+      if (s.gearDown > 0.5) { gidx = 2; gl.set(2); } else if (gidx === 2) { gidx = 0; gl.set(0); }
+    });
+
+    const fp = plane("FLAP LEVER");
+    fp.el.style.flex = "0 0 200px";
+    fp.row.append(flapGate(prof.flaps));
+
+    const ap2 = plane("AUTOBRAKE");
+    ap2.el.style.flex = "0 0 220px";
+    ap2.row.append(col("SELECTOR (visual only)", rsel(prof.abrk, prof.abrk.length === 6 ? [-100, -60, -20, 20, 60, 100] : [-60, 0, 60], { size: 118, start: 1 })));
+
+    const sp = plane("SPEED BRAKE");
+    sp.el.style.flex = "0 0 220px";
+    sp.row.append(speedbrakeGate(["DOWN", "HALF", "FULL"]));
+    const pk = plane("PARKING BRAKE");
+    pk.el.style.flex = "0 0 160px";
+    pk.row.append(pbtn("PARK BRK", { color: "#ff4b3a", click: parkBrake, w: 80 }));
+
+    const r1 = h('<div class="pl-row"></div>'); r1.append(gp.el, fp.el, ap2.el);
+    const r2 = h('<div class="pl-row"></div>'); r2.append(sp.el, pk.el);
+    host.append(r1, r2, msg);
+  }
+
+  function buildMcp(host, boeing) {
+    const ap = apApi;
+    const fm = (key, f) => s => { const v = num(ap()?.values?.[key]); return v === null ? "---" : f(v); };
+    const vsTxt = s => { const v = num(ap()?.values?.verticalSpeed); return v === null ? "----" : (v > 0 ? "+" : "") + Math.round(v); };
+    const grp = (...els) => { const d = h('<div style="display:flex;flex-direction:column;align-items:center;gap:3px"></div>'); d.append(...els); return d; };
+    const hdgSel = () => { try { ap()?.setMode("HDG"); } catch (e) { pmsg(e.message); } };
+    const navSel = () => { try { ap()?.setMode("NAV"); } catch (e) { pmsg(e.message); } };
+    const vsToggle = () => {
+      const a = ap(); if (!a?.values) return;
+      if (num(a.values.verticalSpeed) === null) apSet(apSpecs[3], Math.round((S?.vs ?? 0) / 100) * 100);
+      else a.values.verticalSpeed = null;
+    };
+    const on = () => !!ap()?.on;
+    const msg = h('<div class="mono amb pmsg" style="min-height:16px"></div>');
+
+    if (boeing) {
+      const P = h('<div class="plane" style="padding:12px"><div class="pl-row" style="align-items:flex-start"></div></div>');
+      const r = P.querySelector(".pl-row");
+      r.append(
+        grp(winEl(() => "---", 56), apKnob(apSpecs[0], "COURSE")),
+        grp(pbtn("A/T ARM", { lit: on, click: apToggle, w: 56 }), h('<div style="display:flex"></div>'), pbtn("SPEED", { lit: on, off: false, click: () => {}, w: 56 })),
+        grp(pbtn("N1", { off: true, w: 50 }), pbtn("LVL CHG", { off: true, w: 56 })),
+        grp(winEl(fm("speed", v => String(Math.round(v))), 60), apKnob(apSpecs[2], "IAS / MACH")),
+        grp(pbtn("VNAV", { off: true, w: 52 }), pbtn("LNAV", { lit: () => on() && ap()?.mode === "NAV", click: navSel, w: 52 })),
+        grp(winEl(fm("course", pad3), 56), apKnob(apSpecs[0], "HEADING"), pbtn("HDG SEL", { lit: () => on() && ap()?.mode === "HDG", click: hdgSel, w: 56 })),
+        grp(pbtn("VOR LOC", { off: true, w: 56 }), pbtn("APP", { off: true, w: 56 })),
+        grp(winEl(fm("altitude", v => String(Math.round(v))), 68), apKnob(apSpecs[1], "ALTITUDE")),
+        grp(pbtn("ALT HLD", { lit: () => on() && num(ap()?.values?.verticalSpeed) === null, click: levelOff, w: 56 }), pbtn("V/S", { lit: () => on() && num(ap()?.values?.verticalSpeed) !== null, click: vsToggle, w: 56 })),
+        grp(winEl(vsTxt, 62), apKnob(apSpecs[3], "V/S"))
+      );
+      const P2 = plane("FLIGHT DIRECTOR / AUTOPILOT");
+      P2.row.append(
+        pbtn("F/D L", { off: true, w: 50 }), pbtn("CMD A", { lit: on, click: apToggle, w: 56 }), pbtn("CMD B", { off: true, w: 56 }),
+        pbtn("CWS A", { off: true, w: 56 }), pbtn("CWS B", { off: true, w: 56 }), pbtn("F/D R", { off: true, w: 50 })
+      );
+      const dis = h('<div style="width:200px;height:34px;margin:8px;background:linear-gradient(#e8b800,#9a7a00);border:1px solid #000;border-radius:3px;text-align:center;font:bold 11px Arial;line-height:34px;color:#000;cursor:pointer;box-shadow:0 2px 4px #000">A/P DISENGAGE</div>');
+      dis.onclick = () => { try { ap()?.turnOff(); } catch (e) { pmsg(e.message); } };
+      P2.row.appendChild(dis);
+      host.append(P, P2.el, msg);
+    } else {
+      const P = h('<div class="plane" style="padding:12px"><div class="pl-row" style="align-items:flex-start"></div></div>');
+      const r = P.querySelector(".pl-row");
+      const mach = () => { try { ap()?.setSpeedMode(isMach(ap()) ? "knots" : "mach"); } catch (e) { pmsg(e.message); } };
+      r.append(
+        grp(pbtn("LOC", { off: true, color: "#3cff6a", w: 56 }), pbtn("APPR", { off: true, color: "#3cff6a", w: 56 })),
+        grp(winEl(fm("speed", v => (isMach(ap()) ? v.toFixed(2) : String(Math.round(v)))), 64), apKnob(apSpecs[2], "SPD / MACH"), pbtn("SPD MACH", { click: mach, w: 64 })),
+        grp(winEl(fm("course", pad3), 64), apKnob(apSpecs[0], "HDG / TRK")),
+        grp(pbtn("AP1", { lit: on, color: "#3cff6a", click: apToggle, w: 56 }), pbtn("AP2", { off: true, w: 56 }), pbtn("A/THR", { lit: on, color: "#3cff6a", click: () => {}, w: 56 })),
+        grp(winEl(fm("altitude", v => String(Math.round(v))), 72), apKnob(apSpecs[1], "ALT"), pbtn("LEVEL", { click: levelOff, w: 56 })),
+        grp(winEl(vsTxt, 64), apKnob(apSpecs[3], "V/S"), pbtn("V/S AUTO", { click: () => { if (ap()?.values) ap().values.verticalSpeed = null; }, w: 64 })),
+        grp(pbtn("EXPED", { off: true, w: 56 }), pbtn("METRIC", { off: true, w: 56 }))
+      );
+      host.append(P, msg);
+    }
+  }
+
+  /* ---- AIRBUS page ---- */
+  function buildEngGearAirbus(host, n, prof) {
+    const msg = h('<div class="mono amb pmsg" style="min-height:16px"></div>');
+    const masters = [];
+    let lastEng = 0;
+
+    const r1 = h('<div class="pl-row"></div>');
+    for (let i = 0; i < n; i++) {
+      const p = plane("ENG " + (i + 1) + " MASTER");
+      p.el.style.flex = "1 1 160px";
+      const g = gate(["ON", "OFF"], { h: 44, w: 80, start: 1, onSelect: j => {
+        lastEng = Date.now();
+        if (j === 0) { if (!engRunning(S) && !engCmd(true)) { pmsg("Could not start the engine from here."); g.set(1); } else pmsg(n > 1 ? "GeoFS starts all engines together." : ""); }
+        else if (masters.every(m => m._i === 1)) engCmd(false);
+      } });
+      masters.push(g);
+      p.row.append(g, lampEl("FAULT", "#ffb000", () => false));
+      r1.appendChild(p.el);
+    }
+    reg(s => {
+      if (Date.now() - lastEng < 4000) return;
+      const run = engRunning(s);
+      masters.forEach(m => { if (run && m._i !== 0) m.set(0); if (!run && m._i === 0) m.set(1); });
+    });
+
+    const pm = plane("ENG MODE");
+    pm.el.style.flex = "0 0 170px";
+    pm.row.append(rsel(["CRANK", "NORM", "IGN START"], [-60, 0, 60], { size: 120, start: 1 }));
+    const pf = plane("ENG FIRE (guarded)");
+    pf.el.style.flex = "0 0 190px";
+    for (let i = 0; i < Math.min(n, 4); i++) pf.row.append(h(`<div class="guard" title="Not simulated in GeoFS">ENG ${i + 1}<br>FIRE</div>`));
+    r1.append(pm.el, pf.el);
+
+    const r2 = h('<div class="pl-row"></div>');
+    const gp = plane("LANDING GEAR");
+    gp.el.style.flex = "1 1 300px";
+    let gidx = 1;
+    const gl = gate(["UP", "DOWN"], { h: 90, w: 90, start: 1, onSelect: i => { gidx = i; gearTo(i === 1); } });
+    const tri = h('<div style="display:flex;gap:8px"></div>');
+    ["L", "N", "R"].forEach(t => tri.appendChild(lampEl(t, "#3cff6a", s => (s?.gearDown ?? 0) > 0.98)));
+    gp.row.append(col("GEAR LEVER", gl), h('<div></div>'), col("LDG GEAR", tri), lampEl("UNLK", "#ff4b3a", s => { const g2 = s?.gearDown; return g2 !== null && g2 !== undefined && g2 > 0.02 && g2 < 0.98; }));
+    reg(s => {
+      if (Date.now() - lastGearCmd < 3000 || s?.gearDown === null || s?.gearDown === undefined) return;
+      gl.set(s.gearDown > 0.5 ? 1 : 0);
+    });
+
+    const bp = plane("AUTO BRK (visual only)");
+    bp.el.style.flex = "0 0 220px";
+    let abSel = -1;
+    const abBtns = prof.abrk.map((t, i) => {
+      const b = pbtn(t, { color: "#4fa8ff", click: () => { abSel = abSel === i ? -1 : i; }, w: 56 });
+      reg(() => b.classList.toggle("lit", abSel === i));
+      return b;
+    });
+    bp.row.append(...abBtns);
+
+    const fp = plane("FLAPS");
+    fp.el.style.flex = "0 0 190px";
+    fp.row.append(flapGate(prof.flaps));
+    const pk = plane("PARKING BRAKE");
+    pk.el.style.flex = "0 0 150px";
+    pk.row.append(pbtn("PARK BRK", { color: "#ff4b3a", click: parkBrake, w: 80 }));
+    r2.append(gp.el, bp.el, fp.el, pk.el);
+
+    host.append(r1, r2, msg);
+  }
+
+  /* ---- apply a profile: theme, tabs and plane pages ---- */
+  function applyProfile(id) {
+    const P = PROFILES[id] || PROFILES.generic;
+    curProfile = id;
+
+    root.style.setProperty("--acc", P.acc);
+    root.style.setProperty("--dg", P.dg);
+    root.style.setProperty("--pl", P.pl);
+    $("#gfc-prof").textContent = "· " + P.name;
+
+    $("#gfc-tabs").innerHTML = P.tabs.map(t => `<button class="tab" data-tab="${t[0]}">${t[1]}</button>`).join("");
+
+    planeUpd = [];
+    ["eng", "gear", "mcp"].forEach(k => { const el = $("#gfc-p-" + k); if (el) el.innerHTML = ""; });
+
+    const ac = window.geofs?.aircraft?.instance;
+    const nEng = clamp((ac?.engines && ac.engines.length) || P.eng, 1, 4);
+
+    if (P.kind === "boeing") {
+      buildEngBoeing($("#gfc-p-eng"), nEng);
+      buildGearBoeing($("#gfc-p-gear"), P);
+      buildMcp($("#gfc-p-mcp"), true);
+    } else if (P.kind === "airbus") {
+      buildEngGearAirbus($("#gfc-p-eng"), nEng, P);
+      buildMcp($("#gfc-p-mcp"), false);
+    }
+
+    const ids = P.tabs.map(t => t[0]);
+    showTab(ids.includes(tab) ? tab : ids[0]);
+  }
+
   /* ================= DATA + SETTINGS ================= */
   function buildData() {
     const host = $("#gfc-data");
@@ -1467,6 +2221,7 @@
           <label class="dim">UI scale <select id="s-scale"><option>0.8</option><option>0.9</option><option>1</option><option>1.1</option><option>1.25</option><option>1.5</option></select></label>
           <label><input type="checkbox" id="s-invert"> Invert PFD horizon</label>
           <label><input type="checkbox" id="s-gear"> Invert gear indication</label>
+          <label class="dim">Aircraft profile <select id="s-prof"><option value="auto">Auto-detect</option>${Object.keys(PROFILES).map(k => `<option value="${k}">${PROFILES[k].name}</option>`).join("")}</select></label>
         </div>
         <div class="row" style="margin-top:8px">
           <label class="dim">PFD pitch sensitivity <input type="range" id="s-pitch" min="0.014" max="0.06" step="0.002"></label>
@@ -1489,6 +2244,8 @@
     $("#s-scale").onchange = e => { settings.scale = Number(e.target.value); saveSettings(); applyScale(); };
     $("#s-invert").onchange = e => { settings.invertPfd = e.target.checked; saveSettings(); };
     $("#s-gear").onchange = e => { settings.gearInvert = e.target.checked; saveSettings(); };
+    $("#s-prof").value = settings.profile || "auto";
+    $("#s-prof").onchange = e => { settings.profile = e.target.value; saveSettings(); applyProfile(detectProfile()); };
     $("#s-pitch").oninput = e => { settings.pitchGain = Number(e.target.value); saveSettings(); };
     $("#s-reset").onclick = () => {
       try { Object.keys(localStorage).filter(k => k.startsWith("gfc:")).forEach(k => localStorage.removeItem(k)); } catch (e) { /* ignore */ }
@@ -1577,11 +2334,13 @@
     } else if (tab === "pfd") drawPFD(S);
     else if (tab === "ap") renderAP(S);
     else if (tab === "sys") renderSys(S);
-    else if (tab === "ctl") renderLevers(S);
+    else if (tab === "ctl") { renderLevers(S); renderEngines(S); }
+    else if (tab === "eng" || tab === "gear" || tab === "mcp") runPlaneUpdaters();
     else if (tab === "data") { renderData(); renderPads(); }
   }
 
   let lastFp = 0;
+  let lastProf = 0;
   let timer = null;
   let closed = false;
 
@@ -1590,6 +2349,12 @@
     if (win.closed || !root.isConnected) { closeAll(); return; }
 
     S = snapshot();
+
+    if (Date.now() - lastProf > 1500) {
+      lastProf = Date.now();
+      const pid = detectProfile();
+      if (pid !== curProfile) applyProfile(pid);
+    }
 
     tickStats(S);
     tickVoice(S);
@@ -1608,6 +2373,7 @@
     if (closed) return;
     closed = true;
     clearInterval(timer);
+    clearInterval(hwTimer);
     try { if (synth) synth.cancel(); } catch (e) { /* ignore */ }
 
     if (floating) root.remove();
@@ -1652,7 +2418,7 @@
   $("#gfc-checklist-slot").innerHTML =
     '<div style="padding:14px;color:#8fa0b2;border:1px dashed #394654;border-radius:8px">Checklist module not loaded.<br>Run <b>checklists.js</b> and it will appear here.</div>';
 
-  showTab("map");
+  applyProfile(detectProfile());
   timer = setInterval(tick, 250);
   tick();
 
