@@ -58,7 +58,27 @@
 #gfc-root .tabs{display:flex;gap:4px;padding:6px 8px;background:#111821;border-bottom:1px solid #303b48;overflow-x:auto;flex:0 0 auto}
 #gfc-root .tab{padding:9px 14px;background:#1b242e;color:#d8e2ed;border:1px solid #394654;border-radius:6px;cursor:pointer;font-weight:bold;font-size:12px;white-space:nowrap}
 #gfc-root .tab.on{background:#26394a;border-color:var(--acc,#6c8ba6);border-bottom:3px solid var(--acc,#6c8ba6);color:#fff}
-#gfc-root .plane{background:var(--pl,#3a4047);border:1px solid #0d0f11;border-radius:3px;box-shadow:inset 0 1px 0 #ffffff22;padding:8px 10px 10px;margin-bottom:10px}
+#gfc-root .plane{position:relative;background:radial-gradient(circle at 9px 9px,#15171a 0 2px,#0000 3px),radial-gradient(circle at calc(100% - 9px) 9px,#15171a 0 2px,#0000 3px),radial-gradient(circle at 9px calc(100% - 9px),#15171a 0 2px,#0000 3px),radial-gradient(circle at calc(100% - 9px) calc(100% - 9px),#15171a 0 2px,#0000 3px),linear-gradient(180deg,#ffffff10,#00000026),var(--pl,#3a4047);border:1px solid #0d0f11;border-radius:4px;box-shadow:inset 0 1px 0 #ffffff33,0 3px 8px #0008;padding:14px 16px 14px;margin-bottom:10px;outline:1px solid #ffffff55;outline-offset:-6px}
+#gfc-root .plane h5{text-shadow:0 1px 0 #000}
+#gfc-root.th-air .pbtn .bar{height:12px;margin:0 4px;background:#1c1f22;border:1px solid #000}
+#gfc-root.th-air .pbtn.lit .bar{background:linear-gradient(#1c1f22 0 48%,var(--lc) 52% 100%);box-shadow:0 0 8px var(--lc)}
+#gfc-root.th-air .pbtn .cap{background:linear-gradient(#3a424b,#252b32);color:#cfe8ff;letter-spacing:.5px}
+#gfc-root.th-air .plane{outline-color:#8fb4d155}
+#gfc-root.th-boe .pbtn .cap{background:linear-gradient(#2d3135,#14171a);color:#f2f2f2}
+#gfc-root.th-boe .plane{outline-color:#ffffff88}
+#gfc-root .gate .hnd.wheel{width:50px;height:50px;margin-top:-25px;left:-12px;border-radius:50%;background:radial-gradient(circle,#3a3d41 0 36%,#121315 38% 58%,#2b2e32 60% 100%);border:3px solid #050505}
+#gfc-root .gate .hnd.lever{height:26px;margin-top:-13px;background:linear-gradient(#32363a,#0f1113);border:2px solid #000;border-radius:3px 12px 12px 3px}
+#gfc-root .gate .hnd.lever::after{content:"";position:absolute;right:5px;top:8px;width:14px;height:6px;background:#eee;border-radius:2px}
+#gfc-root .fbar{position:relative;width:220px;height:10px;background:#0a0c0e;border:1px solid #5a626b;border-radius:3px;margin-top:6px}
+#gfc-root .fbar i{position:absolute;top:-4px;width:6px;height:16px;background:var(--acc,#ffb000);border-radius:2px;transition:left .5s}
+#gfc-root.has-photo .pane[data-pane=eng],#gfc-root.has-photo .pane[data-pane=gear],#gfc-root.has-photo .pane[data-pane=flaps],#gfc-root.has-photo .pane[data-pane=brk],#gfc-root.has-photo .pane[data-pane=mcp]{background:linear-gradient(#0d1218d6,#0d1218f4),var(--photo) center/cover}
+#gfc-root .credit{font:10px Arial,sans-serif;color:#8fa0b2;margin-top:4px}
+#gfc-root .credit a{color:var(--acc,#6c8ba6)}
+#gfc-root .photo{width:100%;display:block;border-radius:6px}
+#gfc-root .home .hi{font:bold 24px Arial,sans-serif;color:var(--acc,#fff)}
+#gfc-root .home .sub{color:#c9d1d9;margin:4px 0 10px}
+#gfc-root .chip{display:inline-block;padding:4px 9px;margin:0 6px 6px 0;border:1px solid #3b4857;border-radius:12px;font:11px monospace;color:#cfd8e2;background:#10171e}
+#gfc-root .art{background:linear-gradient(#16212d,#0d1218);border:1px solid #2a3440;border-radius:8px;padding:6px}
 #gfc-root .plane h5{margin:0 0 8px;font:bold 10px Arial,sans-serif;text-align:center;letter-spacing:.5px;border-bottom:1px solid #ffffff33;padding-bottom:3px;color:#e6e9ec}
 #gfc-root .pl-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start;justify-content:center}
 #gfc-root .cap0{font:9px Arial,sans-serif;color:#c9d1d9;text-align:center;margin-bottom:3px}
@@ -216,7 +236,10 @@
         <div class="dim" style="font-size:11px;margin-top:6px">Drag a knob in a circle, or use the mouse wheel (Shift = coarse). Type FL350 or 35000 in the altitude box. With V/S on AUTO, GeoFS climbs or descends to the selected altitude by itself.</div>
       </section>
 
+      <section class="pane" data-pane="home"><div id="gfc-p-home"></div></section>
       <section class="pane" data-pane="eng"><div id="gfc-p-eng"></div></section>
+      <section class="pane" data-pane="flaps"><div id="gfc-p-flaps"></div></section>
+      <section class="pane" data-pane="brk"><div id="gfc-p-brk"></div></section>
       <section class="pane" data-pane="gear"><div id="gfc-p-gear"></div></section>
       <section class="pane" data-pane="mcp"><div id="gfc-p-mcp"></div></section>
 
@@ -397,7 +420,7 @@
   }
 
   /* ================= tabs ================= */
-  let tab = "map";
+  let tab = "home";
 
   function showTab(name) {
     tab = name;
@@ -1739,25 +1762,25 @@
   if (synth) synth.onvoiceschanged = fillVoices;
 
   /* ================= AIRCRAFT PROFILES + REALISTIC PLANE PAGES ================= */
-  const GEN_TABS = [["map", "MAP / INFO"], ["pfd", "PFD"], ["ap", "AUTOPILOT"], ["sys", "SYSTEMS"], ["ctl", "LEVERS & BUTTONS"], ["chk", "CHECKLISTS"], ["voice", "VOICE"], ["data", "DATA & SETTINGS"]];
-  const BOE_TABS = [["eng", "ENGINES"], ["gear", "GEAR & FLAPS"], ["mcp", "MCP"], ["sys", "EICAS"], ["pfd", "PFD"], ["map", "MAP / INFO"], ["chk", "CHECKLISTS"], ["voice", "VOICE"], ["data", "DATA"]];
-  const AIR_TABS = [["eng", "ENGINES & GEAR"], ["mcp", "FCU"], ["sys", "ECAM"], ["pfd", "PFD"], ["map", "MAP / INFO"], ["chk", "CHECKLISTS"], ["voice", "VOICE"], ["data", "DATA"]];
+  const GEN_TABS = [["home", "HOME"], ["map", "MAP / INFO"], ["pfd", "PFD"], ["ap", "AUTOPILOT"], ["sys", "SYSTEMS"], ["ctl", "LEVERS & BUTTONS"], ["chk", "CHECKLISTS"], ["voice", "VOICE"], ["data", "DATA & SETTINGS"]];
+  const BOE_TABS = [["home", "HOME"], ["eng", "ENGINES"], ["gear", "LANDING GEAR"], ["flaps", "FLAPS & SPEEDBRAKE"], ["brk", "BRAKES"], ["mcp", "MCP"], ["sys", "EICAS"], ["pfd", "PFD"], ["map", "MAP / INFO"], ["chk", "CHECKLISTS"], ["voice", "VOICE"], ["data", "DATA"]];
+  const AIR_TABS = [["home", "HOME"], ["eng", "ENGINES"], ["gear", "LANDING GEAR"], ["flaps", "FLAPS & SPOILERS"], ["brk", "BRAKES"], ["mcp", "FCU"], ["sys", "ECAM"], ["pfd", "PFD"], ["map", "MAP / INFO"], ["chk", "CHECKLISTS"], ["voice", "VOICE"], ["data", "DATA"]];
 
-  const b737 = { name: "BOEING 737", kind: "boeing", acc: "#ffb000", dg: "#ffb000", pl: "#3a4047", eng: 2, tabs: BOE_TABS,
+  const b737 = { name: "BOEING 737", wiki: "Boeing 737 Next Generation", kind: "boeing", acc: "#ffb000", dg: "#ffb000", pl: "#50565d", eng: 2, tabs: BOE_TABS,
     flaps: ["0", "1", "2", "5", "10", "15", "25", "30", "40"], abrk: ["RTO", "OFF", "1", "2", "3", "MAX"] };
-  const a320 = { name: "AIRBUS A320", kind: "airbus", acc: "#00d8ff", dg: "#ff9f1a", pl: "#2d343c", eng: 2, tabs: AIR_TABS,
+  const a320 = { name: "AIRBUS A320", wiki: "Airbus A320 family", kind: "airbus", acc: "#00d8ff", dg: "#ff9f1a", pl: "#2a3037", eng: 2, tabs: AIR_TABS,
     flaps: ["0", "1", "2", "3", "FULL"], abrk: ["LO", "MED", "MAX"] };
 
   const PROFILES = {
     generic: { name: "GENERIC (GA / JET)", kind: "generic", acc: "#6c8ba6", dg: "#ffb000", pl: "#3a4047", eng: 1, tabs: GEN_TABS },
     b737,
-    b747: Object.assign({}, b737, { name: "BOEING 747", eng: 4, flaps: ["0", "1", "5", "10", "20", "25", "30"] }),
-    b787: Object.assign({}, b737, { name: "BOEING 787", acc: "#4fd1ff", dg: "#4fd1ff", flaps: ["0", "1", "5", "15", "20", "25", "30"] }),
+    b747: Object.assign({}, b737, { name: "BOEING 747", wiki: "Boeing 747-8", eng: 4, flaps: ["0", "1", "5", "10", "20", "25", "30"] }),
+    b787: Object.assign({}, b737, { name: "BOEING 787", wiki: "Boeing 787 Dreamliner", acc: "#4fd1ff", dg: "#4fd1ff", flaps: ["0", "1", "5", "15", "20", "25", "30"] }),
     a320,
-    a330: Object.assign({}, a320, { name: "AIRBUS A330" }),
-    a340: Object.assign({}, a320, { name: "AIRBUS A340", eng: 4 }),
-    a350: Object.assign({}, a320, { name: "AIRBUS A350", acc: "#7fe3ff" }),
-    a380: Object.assign({}, a320, { name: "AIRBUS A380", eng: 4 })
+    a330: Object.assign({}, a320, { name: "AIRBUS A330", wiki: "Airbus A330" }),
+    a340: Object.assign({}, a320, { name: "AIRBUS A340", wiki: "Airbus A340", eng: 4 }),
+    a350: Object.assign({}, a320, { name: "AIRBUS A350", wiki: "Airbus A350", acc: "#7fe3ff" }),
+    a380: Object.assign({}, a320, { name: "AIRBUS A380", wiki: "Airbus A380", eng: 4 })
   };
 
   function aircraftName() {
@@ -1801,6 +1824,8 @@
     if (o.w) e.style.width = o.w + "px";
     if (o.off) { e.classList.add("off"); e.title = "Not simulated in GeoFS"; }
     else if (o.click) e.addEventListener("click", o.click);
+    if (o.down && !o.off) e.addEventListener("pointerdown", o.down);
+    if (o.up && !o.off) ["pointerup", "pointerleave", "pointercancel"].forEach(ev => e.addEventListener(ev, o.up));
     if (o.lit) reg(s => e.classList.toggle("lit", !!o.lit(s)));
     return e;
   }
@@ -1847,7 +1872,7 @@
 
   function gate(labels, o = {}) {
     const n = labels.length, H = o.h || 110;
-    const e = h(`<div class="gate" style="width:${o.w || 110}px;height:${H + 24}px"><div class="rail" style="top:6px;height:${H}px"></div><div class="hnd"></div></div>`);
+    const e = h(`<div class="gate" style="width:${o.w || 110}px;height:${H + 24}px"><div class="rail" style="top:6px;height:${H}px"></div><div class="hnd ${o.kind || ""}"></div></div>`);
     const hnd = e.querySelector(".hnd");
     const y = i => 6 + (n > 1 ? i * H / (n - 1) : 0);
     const gl = labels.map((t, i) => {
@@ -1934,7 +1959,7 @@
   const apToggle = () => { const ap = apApi(); if (!ap) return; try { if (ap.on) ap.turnOff(); else ap.turnOn(); } catch (err) { pmsg("AP: " + err.message); } };
 
   function flapGate(labels) {
-    const g = gate(labels, { h: 110, w: 110, onSelect: i => {
+    const g = gate(labels, { h: 110, w: 110, kind: "lever", onSelect: i => {
       const max = ctlObj()?.flaps?.maxPosition || 0;
       if (!max) { pmsg("This aircraft has no flaps."); return; }
       setFlaps(Math.round(i * max / (labels.length - 1)));
@@ -1947,7 +1972,7 @@
   }
 
   function speedbrakeGate(labels) {
-    const g = gate(labels, { h: 70, w: 120, onSelect: i => setSpoilers(i / (labels.length - 1)) });
+    const g = gate(labels, { h: 70, w: 120, kind: "lever", onSelect: i => setSpoilers(i / (labels.length - 1)) });
     reg(() => { const c = ctlObj(); if (c?.airbrakes) g.set(Math.round((c.airbrakes.target ?? 0) * (labels.length - 1))); });
     return g;
   }
@@ -1993,46 +2018,60 @@
     host.append(top, msg);
   }
 
-  function buildGearBoeing(host, prof) {
+  const brakeHold = on => () => { try { const st = window.controls.setters.setBrakes; if (on) st.set(); else if (typeof st.unset === "function") st.unset(); } catch (err) { pmsg("Brakes: " + err.message); } };
+  const gearTxt = s => { const g2 = s?.gearDown; return g2 === null || g2 === undefined ? "NO DATA" : g2 > 0.98 ? "DOWN AND LOCKED" : g2 < 0.02 ? "UP" : "IN TRANSIT"; };
+
+  function buildGearBoeing(host) {
     const msg = h('<div class="mono amb pmsg" style="min-height:16px"></div>');
     let gidx = 2;
-
     const gp = plane("LANDING GEAR");
-    gp.el.style.flex = "1 1 330px";
-    const gl = gate(["UP", "OFF", "DN"], { h: 110, w: 90, start: 2, onSelect: i => {
+    const gl = gate(["UP", "OFF", "DN"], { h: 130, w: 100, start: 2, kind: "wheel", onSelect: i => {
       gidx = i;
       if (i === 0) gearTo(false); else if (i === 2) gearTo(true);
     } });
-    const lamps = h('<div style="display:flex;flex-direction:column;gap:6px"></div>');
-    ["NOSE", "LEFT", "RIGHT"].forEach(nm2 => {
-      const r = h('<div style="display:flex;gap:6px;align-items:center"></div>');
-      r.append(lampEl(nm2, "#3fd16a", s => (s?.gearDown ?? 0) > 0.98), lampEl("UNLK", "#ff4b3a", s => { const g2 = s?.gearDown; return g2 !== null && g2 !== undefined && g2 > 0.02 && g2 < 0.98; }));
-      lamps.appendChild(r);
+    const lamps = h('<div style="display:flex;gap:10px"></div>');
+    ["NOSE", "LEFT", "RIGHT"].forEach(n2 => {
+      const c = h('<div style="display:flex;flex-direction:column;gap:6px;align-items:center"></div>');
+      c.append(lampEl(n2, "#3fd16a", s => (s?.gearDown ?? 0) > 0.98), lampEl("UNLK", "#ff4b3a", s => { const g2 = s?.gearDown; return g2 !== null && g2 !== undefined && g2 > 0.02 && g2 < 0.98; }));
+      lamps.appendChild(c);
     });
-    gp.row.append(col("GEAR LEVER", gl), lamps);
+    const st = h('<div class="mono" style="margin-top:10px;text-align:center;color:#3fd16a"></div>');
+    reg(s => { st.textContent = "GEAR " + gearTxt(s); });
+    gp.row.append(col("GEAR LEVER", gl), col("LANDING GEAR INDICATORS", lamps), pbtn("LEVER LOCK OVRD", { off: true, color: "#ff4b3a", w: 76 }));
+    gp.el.appendChild(st);
     reg(s => {
       if (Date.now() - lastGearCmd < 3000 || s?.gearDown === null || s?.gearDown === undefined) return;
       if (s.gearDown > 0.5) { gidx = 2; gl.set(2); } else if (gidx === 2) { gidx = 0; gl.set(0); }
     });
+    host.append(gp.el, msg);
+  }
 
-    const fp = plane("FLAP LEVER");
-    fp.el.style.flex = "0 0 200px";
-    fp.row.append(flapGate(prof.flaps));
+  function buildFlapsBoeing(host, prof) {
+    const msg = h('<div class="mono amb pmsg" style="min-height:16px"></div>');
+    const fp = plane("TRAILING EDGE FLAP LEVER");
+    fp.el.style.flex = "1 1 300px";
+    const bar = h('<div><div class="cap0">FLAP POSITION</div><div class="fbar"><i></i></div></div>');
+    const mk = bar.querySelector("i");
+    reg(() => { const c = ctlObj(), max = c?.flaps?.maxPosition || 0; mk.style.left = (max ? clamp((c.flaps.position ?? c.flaps.target ?? 0) / max, 0, 1) * 214 : 0) + "px"; });
+    fp.row.append(col("FLAPS", flapGate(prof.flaps)), bar);
+    const sp = plane("SPEED BRAKE LEVER");
+    sp.el.style.flex = "1 1 300px";
+    sp.row.append(col("SPEED BRAKE", speedbrakeGate(["DOWN", "HALF", "FULL"])), lampEl("SPEED BRAKE ARMED", "#3fd16a", () => false), lampEl("EXTENDED", "#ffb000", s => (s?.airbrakes ?? 0) > 0.05));
+    const r = h('<div class="pl-row"></div>'); r.append(fp.el, sp.el);
+    host.append(r, msg);
+  }
 
-    const ap2 = plane("AUTOBRAKE");
-    ap2.el.style.flex = "0 0 220px";
-    ap2.row.append(col("SELECTOR (visual only)", rsel(prof.abrk, prof.abrk.length === 6 ? [-100, -60, -20, 20, 60, 100] : [-60, 0, 60], { size: 118, start: 1 })));
-
-    const sp = plane("SPEED BRAKE");
-    sp.el.style.flex = "0 0 220px";
-    sp.row.append(speedbrakeGate(["DOWN", "HALF", "FULL"]));
-    const pk = plane("PARKING BRAKE");
-    pk.el.style.flex = "0 0 160px";
-    pk.row.append(pbtn("PARK BRK", { color: "#ff4b3a", click: parkBrake, w: 80 }));
-
-    const r1 = h('<div class="pl-row"></div>'); r1.append(gp.el, fp.el, ap2.el);
-    const r2 = h('<div class="pl-row"></div>'); r2.append(sp.el, pk.el);
-    host.append(r1, r2, msg);
+  function buildBrakesBoeing(host, prof) {
+    const msg = h('<div class="mono amb pmsg" style="min-height:16px"></div>');
+    const ab = plane("AUTOBRAKE");
+    ab.el.style.flex = "1 1 300px";
+    const sel = rsel(prof.abrk, prof.abrk.length === 6 ? [-100, -60, -20, 20, 60, 100] : [-60, 0, 60], { size: 130, start: 1 });
+    ab.row.append(col("SELECTOR (visual only)", sel), lampEl("AUTO BRAKE DISARM", "#ffb000", () => sel.get() === 1), lampEl("ANTI-SKID INOP", "#ffb000", () => false));
+    const pk = plane("PARKING BRAKE / WHEEL BRAKES");
+    pk.el.style.flex = "1 1 260px";
+    pk.row.append(pbtn("PARK BRK", { color: "#ff4b3a", click: parkBrake, w: 84, lit: s => (num(s?.v?.parkingBrake) ?? 0) > 0 }), pbtn("BRAKES (HOLD)", { color: "#ffb000", down: brakeHold(true), up: brakeHold(false), w: 96, lit: s => (s?.brakes ?? 0) > 0.05 }));
+    const r = h('<div class="pl-row"></div>'); r.append(ab.el, pk.el);
+    host.append(r, msg);
   }
 
   function buildMcp(host, boeing) {
@@ -2092,22 +2131,23 @@
   }
 
   /* ---- AIRBUS page ---- */
-  function buildEngGearAirbus(host, n, prof) {
+  function buildEngAirbus(host, n) {
     const msg = h('<div class="mono amb pmsg" style="min-height:16px"></div>');
     const masters = [];
     let lastEng = 0;
-
     const r1 = h('<div class="pl-row"></div>');
     for (let i = 0; i < n; i++) {
       const p = plane("ENG " + (i + 1) + " MASTER");
-      p.el.style.flex = "1 1 160px";
-      const g = gate(["ON", "OFF"], { h: 44, w: 80, start: 1, onSelect: j => {
+      p.el.style.flex = "1 1 170px";
+      const g = gate(["ON", "OFF"], { h: 46, w: 90, start: 1, kind: "lever", onSelect: j => {
         lastEng = Date.now();
         if (j === 0) { if (!engRunning(S) && !engCmd(true)) { pmsg("Could not start the engine from here."); g.set(1); } else pmsg(n > 1 ? "GeoFS starts all engines together." : ""); }
         else if (masters.every(m => m._i === 1)) engCmd(false);
       } });
       masters.push(g);
-      p.row.append(g, lampEl("FAULT", "#ffb000", () => false));
+      const rd = h('<div class="mono" style="color:#3cff6a;min-width:70px;line-height:1.6"></div>');
+      reg(s => { const r = num(s?.ac?.engines?.[i]?.rpm) ?? s?.rpm; rd.innerHTML = `RPM ${r === null || r === undefined ? "---" : Math.round(r)}<br>${engRunning(s) ? "RUNNING" : "OFF"}`; });
+      p.row.append(g, lampEl("FAULT", "#ffb000", () => false), rd);
       r1.appendChild(p.el);
     }
     reg(s => {
@@ -2115,47 +2155,242 @@
       const run = engRunning(s);
       masters.forEach(m => { if (run && m._i !== 0) m.set(0); if (!run && m._i === 0) m.set(1); });
     });
-
     const pm = plane("ENG MODE");
-    pm.el.style.flex = "0 0 170px";
-    pm.row.append(rsel(["CRANK", "NORM", "IGN START"], [-60, 0, 60], { size: 120, start: 1 }));
+    pm.el.style.flex = "0 0 200px";
+    pm.row.append(rsel(["CRANK", "NORM", "IGN START"], [-60, 0, 60], { size: 130, start: 1 }));
     const pf = plane("ENG FIRE (guarded)");
-    pf.el.style.flex = "0 0 190px";
+    pf.el.style.flex = "0 0 240px";
     for (let i = 0; i < Math.min(n, 4); i++) pf.row.append(h(`<div class="guard" title="Not simulated in GeoFS">ENG ${i + 1}<br>FIRE</div>`));
-    r1.append(pm.el, pf.el);
+    const r2 = h('<div class="pl-row"></div>'); r2.append(pm.el, pf.el);
+    host.append(r1, r2, msg);
+  }
 
-    const r2 = h('<div class="pl-row"></div>');
+  function buildGearAirbus(host) {
+    const msg = h('<div class="mono amb pmsg" style="min-height:16px"></div>');
     const gp = plane("LANDING GEAR");
-    gp.el.style.flex = "1 1 300px";
-    let gidx = 1;
-    const gl = gate(["UP", "DOWN"], { h: 90, w: 90, start: 1, onSelect: i => { gidx = i; gearTo(i === 1); } });
-    const tri = h('<div style="display:flex;gap:8px"></div>');
+    const gl = gate(["UP", "DOWN"], { h: 100, w: 100, start: 1, kind: "wheel", onSelect: i => gearTo(i === 1) });
+    const tri = h('<div style="display:flex;gap:10px"></div>');
     ["L", "N", "R"].forEach(t => tri.appendChild(lampEl(t, "#3cff6a", s => (s?.gearDown ?? 0) > 0.98)));
-    gp.row.append(col("GEAR LEVER", gl), h('<div></div>'), col("LDG GEAR", tri), lampEl("UNLK", "#ff4b3a", s => { const g2 = s?.gearDown; return g2 !== null && g2 !== undefined && g2 > 0.02 && g2 < 0.98; }));
+    const st = h('<div class="mono" style="margin-top:10px;text-align:center;color:#3cff6a"></div>');
+    reg(s => { st.textContent = "GEAR " + gearTxt(s); });
+    gp.row.append(col("GEAR LEVER", gl), col("LDG GEAR", tri), lampEl("UNLK", "#ff4b3a", s => { const g2 = s?.gearDown; return g2 !== null && g2 !== undefined && g2 > 0.02 && g2 < 0.98; }), pbtn("GRVTY GEAR EXTN", { off: true, w: 80 }));
+    gp.el.appendChild(st);
     reg(s => {
       if (Date.now() - lastGearCmd < 3000 || s?.gearDown === null || s?.gearDown === undefined) return;
       gl.set(s.gearDown > 0.5 ? 1 : 0);
     });
+    host.append(gp.el, msg);
+  }
 
-    const bp = plane("AUTO BRK (visual only)");
-    bp.el.style.flex = "0 0 220px";
+  function buildFlapsAirbus(host, prof) {
+    const msg = h('<div class="mono amb pmsg" style="min-height:16px"></div>');
+    const fp = plane("FLAP LEVER");
+    fp.el.style.flex = "1 1 280px";
+    const bar = h('<div><div class="cap0">FLAP POSITION</div><div class="fbar"><i></i></div></div>');
+    const mk = bar.querySelector("i");
+    reg(() => { const c = ctlObj(), max = c?.flaps?.maxPosition || 0; mk.style.left = (max ? clamp((c.flaps.position ?? c.flaps.target ?? 0) / max, 0, 1) * 214 : 0) + "px"; });
+    fp.row.append(col("FLAPS", flapGate(prof.flaps)), bar);
+    const sp = plane("SPEED BRAKE / GROUND SPOILERS");
+    sp.el.style.flex = "1 1 280px";
+    sp.row.append(col("SPD BRK", speedbrakeGate(["RET", "HALF", "FULL"])), lampEl("SPOILERS EXTENDED", "#ffb000", s => (s?.airbrakes ?? 0) > 0.05));
+    const r = h('<div class="pl-row"></div>'); r.append(fp.el, sp.el);
+    host.append(r, msg);
+  }
+
+  function buildBrakesAirbus(host, prof) {
+    const msg = h('<div class="mono amb pmsg" style="min-height:16px"></div>');
+    const ab = plane("AUTO BRK (visual only)");
+    ab.el.style.flex = "1 1 280px";
     let abSel = -1;
-    const abBtns = prof.abrk.map((t, i) => {
-      const b = pbtn(t, { color: "#4fa8ff", click: () => { abSel = abSel === i ? -1 : i; }, w: 56 });
+    prof.abrk.forEach((t, i) => {
+      const b = pbtn(t, { color: "#4fa8ff", click: () => { abSel = abSel === i ? -1 : i; }, w: 62 });
       reg(() => b.classList.toggle("lit", abSel === i));
-      return b;
+      ab.row.append(b);
     });
-    bp.row.append(...abBtns);
+    const sk = plane("A/SKID & N/W STRG");
+    sk.el.style.flex = "0 0 200px";
+    sk.row.append(pbtn("ON", { color: "#4fa8ff", off: true, w: 60 }), pbtn("OFF", { color: "#ffb000", off: true, w: 60 }));
+    const pk = plane("PARKING BRAKE / WHEEL BRAKES");
+    pk.el.style.flex = "1 1 240px";
+    pk.row.append(pbtn("PARK BRK", { color: "#ff4b3a", click: parkBrake, w: 84, lit: s => (num(s?.v?.parkingBrake) ?? 0) > 0 }), pbtn("BRAKES (HOLD)", { color: "#ffb000", down: brakeHold(true), up: brakeHold(false), w: 96, lit: s => (s?.brakes ?? 0) > 0.05 }));
+    const r = h('<div class="pl-row"></div>'); r.append(ab.el, sk.el, pk.el);
+    host.append(r, msg);
+  }
 
-    const fp = plane("FLAPS");
-    fp.el.style.flex = "0 0 190px";
-    fp.row.append(flapGate(prof.flaps));
-    const pk = plane("PARKING BRAKE");
-    pk.el.style.flex = "0 0 150px";
-    pk.row.append(pbtn("PARK BRK", { color: "#ff4b3a", click: parkBrake, w: 80 }));
-    r2.append(gp.el, bp.el, fp.el, pk.el);
+  /* ---- HOME page: welcome, flight plan brief, aircraft picture ---- */
+  function planeArt(P, n) {
+    const a = P.acc, body = "#e9eef3", dk = "#aab4be";
+    if (P.kind === "generic") {
+      return `<svg viewBox="0 0 640 230" width="100%" role="img" aria-label="Aircraft"><ellipse cx="320" cy="212" rx="250" ry="7" fill="#000" opacity=".35"/><rect x="190" y="82" width="250" height="10" rx="4" fill="${dk}"/><path d="M250 92 L228 140M390 92 L420 140" stroke="#7d8791" stroke-width="3"/><path d="M520 112 L572 50 L596 50 L582 120Z" fill="${body}"/><path d="M572 50 L596 50 L592 66 L568 66Z" fill="${a}"/><path d="M60 132 C60 108 100 96 150 96 L420 100 L566 114 L572 132 L420 152 L150 154 C100 154 60 150 60 132Z" fill="${body}"/><path d="M110 104 L180 100 L184 120 L112 124Z" fill="#1b2430"/><rect x="60" y="130" width="512" height="7" fill="${a}" opacity=".9"/><ellipse cx="54" cy="132" rx="6" ry="58" fill="#aab4be" opacity=".35"/><g fill="#222"><circle cx="190" cy="168" r="11"/><circle cx="330" cy="168" r="11"/><circle cx="530" cy="156" r="7"/></g></svg>`;
+    }
+    const four = n >= 4;
+    const eng = four
+      ? `<ellipse cx="292" cy="164" rx="32" ry="13" fill="#c9d1d9" stroke="#7d8791"/><ellipse cx="262" cy="164" rx="5" ry="10" fill="#1b2430"/><ellipse cx="384" cy="174" rx="30" ry="12" fill="#c9d1d9" stroke="#7d8791"/><ellipse cx="356" cy="174" rx="5" ry="9" fill="#1b2430"/>`
+      : `<ellipse cx="330" cy="168" rx="40" ry="16" fill="#c9d1d9" stroke="#7d8791"/><ellipse cx="294" cy="168" rx="6" ry="12" fill="#1b2430"/>`;
+    return `<svg viewBox="0 0 640 230" width="100%" role="img" aria-label="Aircraft"><defs><clipPath id="fz"><path d="M28 118 C28 88 66 76 112 76 L470 80 C520 82 560 96 598 118 C560 134 520 138 470 138 L112 140 C66 140 28 138 28 118Z"/></clipPath></defs><ellipse cx="320" cy="214" rx="260" ry="7" fill="#000" opacity=".35"/><path d="M505 92 L585 14 L612 14 L574 98Z" fill="${body}"/><path d="M585 14 L612 14 L606 32 L578 32Z" fill="${a}"/><path d="M540 108 L628 100 L632 108 L548 122Z" fill="${dk}"/><path d="M250 126 L420 178 L452 178 L330 124Z" fill="${dk}"/>${eng}<path d="M28 118 C28 88 66 76 112 76 L470 80 C520 82 560 96 598 118 C560 134 520 138 470 138 L112 140 C66 140 28 138 28 118Z" fill="${body}"/><rect x="0" y="121" width="640" height="9" fill="${a}" clip-path="url(#fz)"/><path d="M52 98 L88 94 L86 106 L50 108Z" fill="#1b2430"/><path d="M112 102 H540" stroke="#26303c" stroke-width="5" stroke-dasharray="3 7" stroke-linecap="round"/><g fill="#222"><circle cx="150" cy="154" r="9"/><circle cx="332" cy="158" r="7"/><circle cx="352" cy="158" r="7"/></g></svg>`;
+  }
 
-    host.append(r1, r2, msg);
+  /* ---- real photos: fetched at runtime from Wikipedia / Wikimedia Commons (credited), or your own ---- */
+  const WIKI_API = "https://en.wikipedia.org/w/api.php";
+  const stripHtml = t => String(t || "").replace(/<[^>]*>/g, "").trim();
+  const normT = t => String(t || "").replace(/_/g, " ");
+
+  async function wjson(params) {
+    const u = WIKI_API + "?" + new URLSearchParams(Object.assign({ format: "json", origin: "*", redirects: "1" }, params));
+    const r = await fetch(u);
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    return r.json();
+  }
+
+  async function findPhotos(P) {
+    const name = aircraftName();
+    const key = "photos:" + (P.wiki || name || "generic");
+    const cached = store.get(key, null);
+    if (cached && Date.now() - cached.t < 7 * 864e5) return cached;
+
+    let title = P.wiki;
+    if (!title) {
+      if (name) {
+        const q = await wjson({ action: "query", list: "search", srsearch: name + " aircraft", srlimit: "1" });
+        title = q.query?.search?.[0]?.title;
+      }
+      if (!title) title = "Cessna 172";
+    }
+
+    const d = await wjson({ action: "query", titles: title, prop: "pageimages|images", piprop: "name", imlimit: "120" });
+    const page = Object.values(d.query?.pages || {})[0] || {};
+    const ext = page.pageimage ? "File:" + normT(page.pageimage) : null;
+    const imgs = (page.images || []).map(i => normT(i.title)).filter(t => /\.(jpe?g|png)$/i.test(t));
+    const cock = imgs.find(t => /cockpit|flight.?deck/i.test(t)) || imgs.find(t => /instrument|panel/i.test(t));
+
+    const out = { t: Date.now(), title };
+    const files = [ext, cock].filter(Boolean);
+    if (files.length) {
+      const info = await wjson({ action: "query", titles: files.join("|"), prop: "imageinfo", iiprop: "url|extmetadata", iiurlwidth: "900" });
+      Object.values(info.query?.pages || {}).forEach(pg => {
+        const ii = pg.imageinfo && pg.imageinfo[0];
+        if (!ii) return;
+        const rec = { url: ii.thumburl || ii.url, page: ii.descriptionurl, artist: stripHtml(ii.extmetadata?.Artist?.value).slice(0, 60), lic: stripHtml(ii.extmetadata?.LicenseShortName?.value) };
+        if (normT(pg.title) === ext) out.ext = rec;
+        if (normT(pg.title) === cock) out.cock = rec;
+      });
+    }
+    store.set(key, out);
+    return out;
+  }
+
+  const creditHtml = r => r.own ? "Your own photo" : `Photo: ${esc(r.artist || "unknown")}${r.lic ? " · " + esc(r.lic) : ""} · <a href="${esc(r.page || "#")}" target="_blank" rel="noopener">Wikimedia Commons</a>`;
+
+  function showPhoto(wrapEl, rec, svgEl) {
+    if (!rec || !rec.url) return;
+    const img = doc.createElement("img");
+    img.className = "photo";
+    img.alt = "";
+    img.style.display = "none";
+    img.onload = () => { if (svgEl) svgEl.style.display = "none"; img.style.display = "block"; wrapEl.style.display = ""; };
+    img.onerror = () => { img.remove(); };
+    img.src = rec.url;
+    const cr = h(`<div class="credit">${creditHtml(rec)}</div>`);
+    wrapEl.prepend(img);
+    wrapEl.appendChild(cr);
+  }
+
+  function fillPhotos(P, wrap, id) {
+    const art = wrap.querySelector("#hm-art"), svg = wrap.querySelector("#hm-svg"), cockEl = wrap.querySelector("#hm-cock"), ctl = wrap.querySelector("#hm-ctl");
+    const own = store.get("photo:" + id, null);
+
+    const pick = h('<button class="btn sm">USE MY OWN PHOTO</button>');
+    const fi = doc.createElement("input");
+    fi.type = "file"; fi.accept = "image/*"; fi.style.display = "none";
+    pick.onclick = () => fi.click();
+    fi.onchange = () => {
+      const f = fi.files && fi.files[0];
+      if (!f) return;
+      const fr = new FileReader();
+      fr.onload = () => {
+        const im = new Image();
+        im.onload = () => {
+          const sc = Math.min(1, 900 / im.width), cv = doc.createElement("canvas");
+          cv.width = Math.round(im.width * sc); cv.height = Math.round(im.height * sc);
+          cv.getContext("2d").drawImage(im, 0, 0, cv.width, cv.height);
+          store.set("photo:" + id, cv.toDataURL("image/jpeg", 0.82));
+          applyProfile(id);
+        };
+        im.src = fr.result;
+      };
+      fr.readAsDataURL(f);
+    };
+    ctl.append(pick, fi);
+    if (own) {
+      const rs2 = h('<button class="btn sm">USE ONLINE PHOTO</button>');
+      rs2.onclick = () => { try { localStorage.removeItem("gfc:photo:" + id); } catch (e) { /* ignore */ } applyProfile(id); };
+      ctl.appendChild(rs2);
+      showPhoto(art, { url: own, own: true }, svg);
+    }
+
+    findPhotos(P).then(ph => {
+      if (curProfile !== id) return;
+      if (!own && ph.ext) showPhoto(art, ph.ext, svg);
+      if (ph.cock) {
+        showPhoto(cockEl, ph.cock, null);
+        cockEl.prepend(h('<div class="c0" style="text-align:left;margin-bottom:6px">FLIGHT DECK</div>'));
+        root.style.setProperty("--photo", `url("${ph.cock.url}")`);
+        root.classList.add("has-photo");
+      }
+    }).catch(() => { /* offline or blocked: the drawing stays */ });
+  }
+
+  function buildHome(host, P, nEng) {
+    const part = new Date().getHours();
+    const greet = part < 12 ? "Good morning" : part < 18 ? "Good afternoon" : "Good evening";
+    const user = window.geofs?.userRecord;
+    const who = (user && (user.callsign || user.name)) || "Captain";
+    const acName = aircraftName() || P.name;
+
+    const wrap = h(`<div class="home"><div class="card"><div class="hi">${esc(greet)}, ${esc(who)}</div><div class="sub">You are flying the <b>${esc(acName)}</b></div><div id="hm-chips"></div></div><div class="art" id="hm-art"><div id="hm-svg">${planeArt(P, nEng)}</div><div id="hm-ctl" class="row" style="margin-top:6px;justify-content:flex-end"></div></div><div class="card" id="hm-cock" style="display:none"></div><div class="card" id="hm-fp"></div><div class="card"><div class="cap0" style="text-align:left;margin-bottom:6px">JUMP TO</div><div id="hm-tiles" class="row"></div></div></div>`);
+    const chips = wrap.querySelector("#hm-chips"), fp = wrap.querySelector("#hm-fp"), tiles = wrap.querySelector("#hm-tiles");
+
+    P.tabs.filter(t => t[0] !== "home").forEach(t => {
+      const b = h(`<button class="btn sm" style="padding:10px 12px">${esc(t[1])}</button>`);
+      b.onclick = () => showTab(t[0]);
+      tiles.appendChild(b);
+    });
+
+    let lastSig = "";
+    reg(s => {
+      chips.innerHTML = [
+        s ? (s.onGround ? "ON THE GROUND" : "AIRBORNE") : "WAITING FOR GEOFS",
+        s && s.ias !== null ? "IAS " + Math.round(s.ias) + " KT" : "",
+        s && s.alt !== null ? "ALT " + Math.round(s.alt) + " FT" : "",
+        s && s.hdg !== null ? "HDG " + pad3(s.hdg) : "",
+        s ? (engRunning(s) ? "ENGINES RUNNING" : "ENGINES OFF") : ""
+      ].filter(Boolean).map(c => `<span class="chip">${esc(c)}</span>`).join("");
+
+      const wps = getFlightPlan();
+      const sig = JSON.stringify(wps.map(w => [w.ident, w.lat, w.lon])) + (s && s.gs !== null ? Math.round(s.gs / 20) : "");
+      if (sig === lastSig) return;
+      lastSig = sig;
+
+      if (!wps.length) {
+        fp.innerHTML = '<div class="cap0" style="text-align:left">FLIGHT PLAN BRIEF</div><div class="dim">No flight plan loaded. Create one in the GeoFS NAV panel and it will be briefed here.</div>';
+        return;
+      }
+      let total = 0;
+      for (let i = 1; i < wps.length; i++) {
+        const a2 = wps[i - 1], b2 = wps[i];
+        if (a2.lat !== null && b2.lat !== null) total += nm(a2.lat, a2.lon, b2.lat, b2.lon);
+      }
+      const nameOf = w => w.ident || w.type || "WPT";
+      const spd = s && s.gs !== null && s.gs > 80 ? s.gs : P.kind === "generic" ? 110 : 430;
+      const via = wps.slice(1, -1).slice(0, 6).map(nameOf).join(" → ");
+      fp.innerHTML = `<div class="cap0" style="text-align:left">FLIGHT PLAN BRIEF</div>
+        <div style="font:bold 18px Arial,sans-serif;color:var(--acc)">${esc(nameOf(wps[0]))} → ${esc(nameOf(wps[wps.length - 1]))}</div>
+        <div class="mono" style="margin:6px 0;color:#cfd8e2">${wps.length} waypoints • ${total.toFixed(0)} NM • about ${hms(total / spd * 3600).slice(0, 5)} h:m at ${Math.round(spd)} kt</div>
+        ${via ? `<div class="dim">Via ${esc(via)}${wps.length > 8 ? " …" : ""}</div>` : ""}`;
+    });
+
+    host.appendChild(wrap);
+    fillPhotos(P, wrap, curProfile);
   }
 
   /* ---- apply a profile: theme, tabs and plane pages ---- */
@@ -2167,21 +2402,31 @@
     root.style.setProperty("--dg", P.dg);
     root.style.setProperty("--pl", P.pl);
     $("#gfc-prof").textContent = "· " + P.name;
+    root.classList.remove("th-air", "th-boe", "has-photo");
+    if (P.kind === "airbus") root.classList.add("th-air");
+    else if (P.kind === "boeing") root.classList.add("th-boe");
 
     $("#gfc-tabs").innerHTML = P.tabs.map(t => `<button class="tab" data-tab="${t[0]}">${t[1]}</button>`).join("");
 
     planeUpd = [];
-    ["eng", "gear", "mcp"].forEach(k => { const el = $("#gfc-p-" + k); if (el) el.innerHTML = ""; });
+    ["home", "eng", "gear", "flaps", "brk", "mcp"].forEach(k => { const el = $("#gfc-p-" + k); if (el) el.innerHTML = ""; });
 
     const ac = window.geofs?.aircraft?.instance;
     const nEng = clamp((ac?.engines && ac.engines.length) || P.eng, 1, 4);
 
+    buildHome($("#gfc-p-home"), P, nEng);
+
     if (P.kind === "boeing") {
       buildEngBoeing($("#gfc-p-eng"), nEng);
-      buildGearBoeing($("#gfc-p-gear"), P);
+      buildGearBoeing($("#gfc-p-gear"));
+      buildFlapsBoeing($("#gfc-p-flaps"), P);
+      buildBrakesBoeing($("#gfc-p-brk"), P);
       buildMcp($("#gfc-p-mcp"), true);
     } else if (P.kind === "airbus") {
-      buildEngGearAirbus($("#gfc-p-eng"), nEng, P);
+      buildEngAirbus($("#gfc-p-eng"), nEng);
+      buildGearAirbus($("#gfc-p-gear"));
+      buildFlapsAirbus($("#gfc-p-flaps"), P);
+      buildBrakesAirbus($("#gfc-p-brk"), P);
       buildMcp($("#gfc-p-mcp"), false);
     }
 
@@ -2335,7 +2580,7 @@
     else if (tab === "ap") renderAP(S);
     else if (tab === "sys") renderSys(S);
     else if (tab === "ctl") { renderLevers(S); renderEngines(S); }
-    else if (tab === "eng" || tab === "gear" || tab === "mcp") runPlaneUpdaters();
+    else if (["home", "eng", "gear", "flaps", "brk", "mcp"].includes(tab)) runPlaneUpdaters();
     else if (tab === "data") { renderData(); renderPads(); }
   }
 
